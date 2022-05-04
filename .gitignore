@@ -1,13 +1,12 @@
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+target/
+.idea/
+.idea/uiDesigner.xml
+.mvn/
 *.iws
 *.iml
 *.ipr
@@ -37,10 +36,5 @@ build/
 ### Mac OS ###
 .DS_Store
 /src/main/resources/hibernate.cfg.xml
-/.idea/.gitignore
-/.idea/encodings.xml
-/.idea/jpa-buddy.xml
-/.idea/misc.xml
-/.idea/vcs.xml
-/.mvn/wrapper/maven-wrapper.jar
-/.mvn/wrapper/maven-wrapper.properties
+/.idea/
+/.mvn/
