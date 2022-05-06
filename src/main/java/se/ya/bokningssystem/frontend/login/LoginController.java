@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lombok.Getter;
-import se.ya.bokningssystem.frontend.switcher.Switcher;
 
 @Getter
 public class LoginController {

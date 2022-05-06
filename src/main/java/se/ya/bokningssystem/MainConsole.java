@@ -2,7 +2,6 @@ package se.ya.bokningssystem;
 
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
-import se.ya.bokningssystem.backend.entity.enums.Availability;
 
 public class MainConsole {
 

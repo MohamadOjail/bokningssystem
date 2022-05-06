@@ -1,14 +1,11 @@
 package se.ya.bokningssystem.frontend.switcher;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import se.ya.bokningssystem.frontend.login.LoginController;
-import se.ya.bokningssystem.frontend.main.MainController;
 
 import java.io.IOException;
 

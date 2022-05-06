@@ -3,7 +3,6 @@ package se.ya.bokningssystem.frontend.login;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressIndicator;
 import se.ya.bokningssystem.backend.dao.UserDAO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.frontend.switcher.ObjectHolder;

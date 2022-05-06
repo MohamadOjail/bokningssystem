@@ -3,9 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-
+<?import javafx.scene.layout.*?>
 <BorderPane fx:id="app_pane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.main.MainController">
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">

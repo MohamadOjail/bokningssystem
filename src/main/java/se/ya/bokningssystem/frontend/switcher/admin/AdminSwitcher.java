@@ -1,7 +1,6 @@
 package se.ya.bokningssystem.frontend.switcher.admin;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import lombok.AccessLevel;
 import lombok.Getter;
