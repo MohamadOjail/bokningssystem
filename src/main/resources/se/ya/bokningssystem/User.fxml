@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.user.UserController">
+   <children>
+      <VBox id="mainContainer" maxWidth="800.0" spacing="40.0" VBox.vgrow="NEVER">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Välkommen: " />
+                  <Label id="userName" fx:id="lbl_user_name" text="användanamn" />
+                  <Label id="logout" fx:id="lbl_log_out" text="Logga ut">
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="40.0">
+               <children>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="Dina bokningar:" />
+                        <TableView fx:id="tv_bookings" minHeight="500.0" minWidth="540.0">
+                          <columns>
+                            <TableColumn fx:id="col_bkngs_resources" minWidth="250.0" prefWidth="75.0" text="Resurs" />
+                            <TableColumn fx:id="col_bkngs_return_date" minWidth="180.0" prefWidth="75.0" text="återlämnas:" />
+                              <TableColumn fx:id="col_bkngs_status" minWidth="100.0" prefWidth="75.0" text="status" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
+                           <children>
+                              <Button id="opsBtn" fx:id="btn_cancel_booking" mnemonicParsing="false" text="Avboka" />
+                              <Button id="opsBtn" fx:id="btn_return_resource" mnemonicParsing="false" text="Lämna tillbaka" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
+                     <children>
+                        <Label text="Hitta en resurs för att boka" />
+                        <TextField fx:id="tf_search" />
+                        <TableView fx:id="tv_resources" minHeight="450.0" minWidth="540.0">
+                          <columns>
+                            <TableColumn fx:id="col_rscs_resources" minWidth="250.0" prefWidth="75.0" text="Resurs" />
+                            <TableColumn fx:id="col_rscs_status" minWidth="100.0" prefWidth="75.0" text="status" />
+                              <TableColumn fx:id="col_rscs_available_date" minWidth="180.0" prefWidth="75.0" text="tillgänglig" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
+                           <children>
+                              <Button id="opsBtn" fx:id="btn_book" mnemonicParsing="false" text="Boka" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@styles/button.css" />
+      <URL value="@styles/label.css" />
+      <URL value="@styles/styles.css" />
+   </stylesheets>
+</VBox>

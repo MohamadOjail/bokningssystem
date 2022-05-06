@@ -1,0 +1,19 @@
+#userName{
+    -fx-text-fill: #4da802;
+    -fx-font-weight: bold;
+}
+
+#logout{
+    -fx-text-fill: #ae5b03;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#logout:hover{
+    -fx-text-fill: #ae2203;
+}
+
+#logout:pressed{
+    -fx-text-fill: #033fae;
+}
