@@ -1,7 +1,7 @@
 package se.ya.bokningssystem.frontend.switcher;
 
 public enum Views {
-    MAIN,
+    LOGIN,
     USER,
     ADMIN
 }

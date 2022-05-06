@@ -1,28 +1,26 @@
 package se.ya.bokningssystem.frontend.main;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
 import lombok.Getter;
-import se.ya.bokningssystem.backend.entity.UserEO;
+import se.ya.bokningssystem.frontend.switcher.Switcher;
+import se.ya.bokningssystem.frontend.switcher.Views;
 
 @Getter
 public class MainController {
-
-    @FXML private Button btn_login;
-    @FXML private TextField tf_admin_code, tf_user_name;
+    @FXML private BorderPane app_pane;
+    @FXML private ProgressBar loading_bar;
+    @FXML private Label info;
 
     @FXML private void initialize(){
 
-        MainActionHandler actionHandler = new MainActionHandler(this);
-        btn_login.setOnAction(actionHandler);
+        Switcher.get().setApp_pane(app_pane);
+        Switcher.get().loadScene(Views.LOGIN);
+        Switcher.get().setLoading_bar(loading_bar);
 
-        MainInputChangeHandler inputChangeHandler = new MainInputChangeHandler(this);
-        tf_admin_code.setOnKeyTyped(inputChangeHandler);
-        tf_user_name.setOnKeyTyped(inputChangeHandler);
-
-
+        MainProgressListener progressListener = new MainProgressListener(this);
+        loading_bar.progressProperty().addListener(progressListener);
     }
 }

@@ -17,3 +17,7 @@
 #logout:pressed{
     -fx-text-fill: #033fae;
 }
+
+#temp{
+    -fx-font-size: 60;
+}

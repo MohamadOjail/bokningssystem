@@ -3,6 +3,7 @@ package se.ya.bokningssystem.frontend.user;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
+import se.ya.bokningssystem.frontend.utils.Threader;
 
 public class UserSearchFieldListener implements ChangeListener<String> {
 
@@ -17,10 +18,13 @@ public class UserSearchFieldListener implements ChangeListener<String> {
         ResourceDAO resourceDAO = new ResourceDAO();
         uc.getResources().clear();
         if (!uc.getTf_search().getText().isEmpty()) {
-            new Thread(() -> {
-                uc.getResources().clear();
-                uc.getResources().addAll(resourceDAO.findByWildCard(uc.getTf_search().getText()));
-            }).start();
+
+            Threader.execute(
+                    () -> {
+                        uc.getResources().clear();
+                        uc.getResources().addAll(resourceDAO.findByWildCard(uc.getTf_search().getText()));
+                    }
+            );
         }
     }
 }

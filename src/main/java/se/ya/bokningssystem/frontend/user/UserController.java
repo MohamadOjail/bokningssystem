@@ -16,6 +16,7 @@ import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.Availability;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
+import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
 
 import java.time.LocalDateTime;
 @Getter
@@ -40,15 +41,19 @@ public class UserController {
     private final ObservableList<BookingEO> bookings = FXCollections.observableArrayList();
 
     @FXML private void initialize(){
+        ObjectHolder.get().getCurrentUser(this);
+        lbl_user_name.setText(currentUser.getFirstName() + " " + currentUser.getLastName());
+
         UserActionHandler mouseActionHandler = new UserActionHandler(this);
         lbl_log_out.setOnMouseClicked(mouseActionHandler);
+        btn_book.setOnMouseClicked(mouseActionHandler);
 
         tv_bookings.setItems(bookings);
 
         tv_resources.setItems(resources);
         col_rscs_resources.setCellValueFactory(new PropertyValueFactory<>("description"));
-        col_rscs_available_date.setCellValueFactory(new PropertyValueFactory<>("availableDate"));
         col_rscs_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        col_rscs_available_date.setCellValueFactory(new PropertyValueFactory<>("availableDate"));
 
 
         UserSearchFieldListener searchFieldListener = new UserSearchFieldListener(this);

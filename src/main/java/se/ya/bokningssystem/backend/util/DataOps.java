@@ -62,7 +62,7 @@ public class DataOps<T> implements CrudOps<T>{
     private String findByInputQuery(String input,Class<T> xClass) {
         String output = "";
         switch (xClass.getSimpleName().toLowerCase()){
-            case "usereo" -> output = "FROM UserEO WHERE firstName LIKE '%" + input + "%' OR lastName LIKE '%" + input + "%'";
+            case "usereo" -> output = "FROM UserEO WHERE firstName = '" + input + "' OR lastName = '" + input + "'";
             case "resourceeo" -> output = "FROM ResourceEO WHERE description LIKE '%" + input + "%'";
             case "bookingeo" -> output = "FROM BookingEO"; //TODO
         }

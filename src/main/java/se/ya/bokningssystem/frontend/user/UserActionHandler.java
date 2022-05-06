@@ -1,6 +1,5 @@
 package se.ya.bokningssystem.frontend.user;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import se.ya.bokningssystem.frontend.switcher.Switcher;
@@ -18,8 +17,8 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
     public void handle(MouseEvent e) {
         if (e.getSource() == uc.getLbl_log_out()){
             uc.setCurrentUser(null);
-            Switcher switcher = new Switcher();
-            switcher.loadScene(Views.MAIN, uc.getLbl_log_out());
+            Switcher.get().loadScene(Views.LOGIN);
         }
+
     }
 }
