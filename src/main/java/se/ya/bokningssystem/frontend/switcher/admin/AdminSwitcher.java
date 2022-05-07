@@ -22,21 +22,12 @@ public class AdminSwitcher {
     protected String path;
     public void loadScene(Views scene) {
 
-        switch (scene) {
-            case USER -> path = "../../../admin/User.fxml";
-            case BOOKING -> path = "../../../admin/Booking.fxml";
-            case RESOURCE -> path = "../../../admin/Resource.fxml";
-        }
-        switchTo();
-    }
-
-    private void switchTo() {
-
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(scene.path));
             admin_pane.setCenter(loader.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 }

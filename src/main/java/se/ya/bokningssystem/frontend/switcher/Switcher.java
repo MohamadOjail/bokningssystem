@@ -12,7 +12,8 @@ import java.io.IOException;
 @Setter
 @Getter
 public class Switcher {
-
+    @Getter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
     private static Switcher instance = new Switcher();
     public static Switcher get() {return instance;}
     private Switcher() {}
@@ -24,18 +25,8 @@ public class Switcher {
     protected String path;
     public void loadScene(Views scene) {
 
-        switch (scene) {
-            case LOGIN -> path = "../../Login.fxml";
-            case USER -> path = "../../User.fxml";
-            case ADMIN -> path = "../../Admin.fxml";
-        }
-        switchTo();
-    }
-
-    private void switchTo() {
-
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(scene.path));
             app_pane.setCenter(loader.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
