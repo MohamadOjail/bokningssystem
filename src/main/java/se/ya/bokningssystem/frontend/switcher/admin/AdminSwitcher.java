@@ -20,7 +20,7 @@ public class AdminSwitcher {
     @Getter(value = AccessLevel.NONE)
     @Setter(value = AccessLevel.NONE)
     protected String path;
-    public void loadScene(Views scene) {
+    public void loadScene(AdminViews scene) {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(scene.path));
