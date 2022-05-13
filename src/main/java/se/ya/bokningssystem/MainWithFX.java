@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.ya.bokningssystem.backend.entity.Report;
 
 import java.io.IOException;
 

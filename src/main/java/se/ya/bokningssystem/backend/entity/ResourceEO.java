@@ -2,11 +2,11 @@ package se.ya.bokningssystem.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import se.ya.bokningssystem.backend.entity.enums.Availability;
+import se.ya.bokningssystem.backend.entity.enums.state;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "resource")
@@ -19,10 +19,13 @@ public class ResourceEO implements Serializable {
     @Column(name = "resource_id")
     private long id;
 
+    @Column(name = "art_number", nullable = false)
+    private String artNum;
+    @Column(name = "description", nullable = false)
     private String description;
-
+    @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Availability status;
+    private state status;
 
-    private LocalDateTime availableDate = status == Availability.AVAILABLE ? LocalDateTime.now() : null;
+    private LocalDate availableDate;
 }

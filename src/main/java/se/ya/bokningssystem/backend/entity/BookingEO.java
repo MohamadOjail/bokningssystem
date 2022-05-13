@@ -6,7 +6,7 @@ import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "booking")
@@ -27,10 +27,19 @@ public class BookingEO implements Serializable {
     @JoinColumn(referencedColumnName = "resource_id")
     private ResourceEO resource;
 
-    private LocalDateTime startDate;
-    private LocalDateTime returnDate;
-    private LocalDateTime reminderDate;
+    @Column(name = "booking_date", nullable = false)
+    private LocalDate bookingDate;
+
+    @Column(name = "return_date", nullable = false)
+    private LocalDate returnDate;
+
+    @Column(name = "reminder_date", nullable = false)
+    private LocalDate reminderDate;
+
+    @Column(name = "actual_return_date", nullable = false)
+    private LocalDate actualReturnDate;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "booking_status", nullable = false)
     private BookingStatus status;
 }

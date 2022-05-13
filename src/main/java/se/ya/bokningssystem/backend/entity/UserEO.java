@@ -19,13 +19,28 @@ public class UserEO implements Serializable {
     @Column(name = "user_id")
     private long id;
 
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private  String lastName;
-    @Column(nullable = true)
+
+    @Column(name = "email", nullable = false)
     private String email;
-    @Column(nullable = true)
-    private String phone;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<BookingEO> bookings = new ArrayList<>();
+
+    // Utility Methods
+    public void addBooking(BookingEO bookingEO){
+        this.bookings.add(bookingEO);
+    }
+
+    public void removeBooking(BookingEO bookingEO){
+        this.bookings.remove(bookingEO);
+    }
+
+    public void clearBookings(){
+        this.bookings.clear();
+    }
 }

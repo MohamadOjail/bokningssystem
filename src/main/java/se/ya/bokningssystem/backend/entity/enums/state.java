@@ -1,6 +1,7 @@
 package se.ya.bokningssystem.backend.entity.enums;
 
-public enum Availability {
+public enum state {
     AVAILABLE,
-    NOT_AVAILABLE
+    NOT_AVAILABLE,
+    REPAIR
 }
