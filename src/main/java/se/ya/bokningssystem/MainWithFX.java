@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.ya.bokningssystem.backend.entity.Report;
 
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class MainWithFX extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWithFX.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 

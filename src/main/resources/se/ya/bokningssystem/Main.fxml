@@ -2,15 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="se.ya.bokningssystem.ui.controllers.MainController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="app_pane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.main.MainController">
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="info">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></Label>
+            <ProgressBar fx:id="loading_bar" prefHeight="35.0" prefWidth="200.0" progress="0.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" right="10.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>

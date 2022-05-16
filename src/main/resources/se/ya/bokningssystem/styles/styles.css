@@ -1,0 +1,44 @@
+*{
+    -fx-font-family: sans-serif;
+}
+
+Label{
+    -fx-font-size: 20;
+}
+
+TextField{
+    -fx-font-size: 22;
+    -fx-text-fill: #a14403;
+}
+
+#container{
+    -fx-border-color: #818181;
+    -fx-border-radius: 2.5%;
+    -fx-border-width: 1.8px;
+    -fx-padding: 15px;
+}
+
+#app_title{
+    -fx-font-size: 28;
+}
+#logo{
+    -fx-graphic: url('../images/logo.png');
+}
+
+#window{
+    -fx-background-color: #e6e6e6;
+}
+
+#mainContainer{
+    -fx-background-color: #e6e6e6;
+    -fx-padding: 30;
+    -fx-background-radius: 10px;
+    -fx-border-color: #818181;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, grey, 30, 0, 0, 15);
+}
+
+DatePicker{
+    -fx-font-size: 20;
+}
