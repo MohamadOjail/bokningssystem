@@ -39,7 +39,7 @@ public class BookingEO implements Serializable {
     @Column(name = "reminder_date", nullable = false)
     private LocalDate reminderDate;
 
-    @Column(name = "actual_return_date", nullable = false)
+    @Column(name = "actual_return_date", nullable = true)
     private LocalDate actualReturnDate;
 
     @Enumerated(EnumType.STRING)

@@ -2,16 +2,11 @@ package se.ya.bokningssystem.backend.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.entity.BookingEO;
-import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 
-import javax.persistence.NamedQuery;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class DataOps<T> implements CrudOps<T>{
 
@@ -48,7 +43,6 @@ public class DataOps<T> implements CrudOps<T>{
         CrudOps.endSession(factory, session);
         return t;
     }
-
 
 
 
@@ -100,6 +94,22 @@ public class DataOps<T> implements CrudOps<T>{
         try {
             session.beginTransaction();
             T t = session.find(xClass, id);
+
+            switch (xClass.getSimpleName().toLowerCase()){
+                case "usereo" -> {
+                    UserEO userEO = session.get(UserEO.class, id);
+                    userEO.clearBookings();
+                }
+                case "bookingeo" -> {
+                    BookingEO bookingEO = session.get(BookingEO.class, id);
+                    UserEO userEO = bookingEO.getUser();
+                    userEO.clearBookings();
+                }
+            }
+
+//            UserEO userEO = session.get(UserEO.class, 1L);
+//            userEO.removeBooking(session.get(BookingEO.class, 2L));
+
             session.delete(t);
             session.getTransaction().commit();
         } catch (Exception e) {

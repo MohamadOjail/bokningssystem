@@ -7,6 +7,7 @@ import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.util.CrudOps;
+import se.ya.bokningssystem.backend.util.DataOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
 import java.io.Serializable;
@@ -17,7 +18,8 @@ import java.util.Locale;
 public class BookingDAO {
 
     public BookingEO add(BookingEO bookingEO) {
-        return null; //TODO
+        DataOps<BookingEO> dataOps = new DataOps<>();
+        return dataOps.add(bookingEO, BookingEO.class);
     }
 
     public BookingEO getById(long id) {
@@ -25,11 +27,13 @@ public class BookingDAO {
     }
 
     public BookingEO update(BookingEO bookingEO) {
-        return null; //TODO
+        DataOps<BookingEO> dataOps = new DataOps<>();
+        return dataOps.update(bookingEO, BookingEO.class);
     }
 
     public void delete(long id) {
-        //TODO
+        DataOps<BookingEO> dataOps = new DataOps<>();
+        dataOps.delete(id, BookingEO.class);
     }
 
     public List<BookingEO> findAll() {

@@ -9,7 +9,8 @@ public class UserDAO implements DaoOps<UserEO> {
 
     @Override
     public UserEO add(UserEO userEO) {
-        return null; //TODO
+        DataOps<UserEO> dataOps = new DataOps<>();
+        return dataOps.add(userEO, UserEO.class);
     }
 
     @Override
@@ -26,17 +27,20 @@ public class UserDAO implements DaoOps<UserEO> {
 
     @Override
     public UserEO update(UserEO userEO) {
-        return null; //TODO
+        DataOps<UserEO> dataOps = new DataOps<>();
+        return dataOps.update(userEO, UserEO.class);
     }
 
     @Override
     public void delete(long id) {
-        //TODO
+        DataOps<UserEO> dataOps = new DataOps<>();
+        dataOps.delete(id, UserEO.class);
     }
 
     @Override
     public List<UserEO> findAll() {
-        return null; //TODO
+        DataOps<UserEO> dataOps = new DataOps<>();
+        return dataOps.findAll(UserEO.class);
     }
 
     @Override

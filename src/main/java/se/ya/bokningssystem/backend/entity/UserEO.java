@@ -28,7 +28,7 @@ public class UserEO implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<BookingEO> bookings = new ArrayList<>();
 
     // Utility Methods
