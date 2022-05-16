@@ -26,20 +26,20 @@ public class Report implements Serializable {
     @Column(name = "booking_ids")
     private String bookingIds; // enkelt sätt att lagra id, ex: 1,2,3,4,5,6 ...
 
-    @Override
-    public String toString() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-MM-dd");
-        String heading = "Rapport #: " + this.id + " Datum: " + this.reportDate.format(dtf);
-        String body = "";
-        for (BookingEO bookingEO : getBookings()){
-
-        }
-        return "Report{" +
-                "id=" + id +
-                ", reportDate=" + reportDate +
-                ", bookingIds='" + bookingIds + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+//        String heading = "Rapport #: " + this.id + " Datum: " + this.reportDate.format(dtf);
+//        String body = "";
+//        for (BookingEO bookingEO : getBookings()){
+//
+//        }
+//        return "Report{" +
+//                "id=" + id +
+//                ", reportDate=" + reportDate +
+//                ", bookingIds='" + bookingIds + '\'' +
+//                '}';
+//    }
 
     private List<BookingEO> getBookings(){
         BookingDAO bookingDAO = new BookingDAO();

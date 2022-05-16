@@ -12,6 +12,9 @@ import java.time.LocalDate;
 @Table(name = "booking")
 @Setter
 @Getter
+@NamedQuery(name = "byUser", query = "FROM BookingEO c WHERE c.user= :user ")
+@NamedQuery(name = "byResource", query = "FROM BookingEO c WHERE c.resource = :resource")
+@NamedQuery(name = "byStatus", query = "FROM BookingEO c WHERE c.status = :status")
 public class BookingEO implements Serializable {
 
     @Id

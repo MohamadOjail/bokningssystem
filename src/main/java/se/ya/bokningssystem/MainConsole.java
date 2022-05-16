@@ -1,15 +1,19 @@
 package se.ya.bokningssystem;
 
-import se.ya.bokningssystem.backend.dao.ResourceDAO;
-import se.ya.bokningssystem.backend.entity.ResourceEO;
+import se.ya.bokningssystem.backend.dao.UserDAO;
+import se.ya.bokningssystem.backend.entity.UserEO;
 
 public class MainConsole {
 
     public static void main(String[] args) {
 
-        ResourceDAO resourceDAO = new ResourceDAO();
-        for (ResourceEO resourceEO : resourceDAO.findByWildCard("mod")){
-            System.out.println(resourceEO.getId() + " - " + resourceEO.getDescription());
-        }
+        UserDAO userDAO = new UserDAO();
+        UserEO userEO = new UserEO();
+        userEO.setFirstName("xc");
+        userEO.setLastName("xc");
+        userEO.setEmail("xc@tt.ee");
+
+        userDAO.add(userEO);
+
     }
 }

@@ -1,6 +1,8 @@
 package se.ya.bokningssystem.backend.entity.enums;
 
-public enum BookingStatus {
+import java.io.Serializable;
+
+public enum BookingStatus implements Serializable {
     ACTIVE,
     FINISHED,
     OVERDUE

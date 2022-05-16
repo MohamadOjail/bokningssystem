@@ -2,9 +2,16 @@ package se.ya.bokningssystem.backend.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import se.ya.bokningssystem.backend.entity.BookingEO;
+import se.ya.bokningssystem.backend.entity.ResourceEO;
+import se.ya.bokningssystem.backend.entity.UserEO;
 
+import javax.persistence.NamedQuery;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DataOps<T> implements CrudOps<T>{
 
@@ -42,6 +49,9 @@ public class DataOps<T> implements CrudOps<T>{
         return t;
     }
 
+
+
+
     @Override
     public T getByInput(String input, Class<T> xClass) {
         T t = null;
@@ -64,7 +74,8 @@ public class DataOps<T> implements CrudOps<T>{
         switch (xClass.getSimpleName().toLowerCase()){
             case "usereo" -> output = "FROM UserEO WHERE firstName = '" + input + "' OR lastName = '" + input + "'";
             case "resourceeo" -> output = "FROM ResourceEO WHERE description LIKE '%" + input + "%'";
-            case "bookingeo" -> output = "FROM BookingEO"; //TODO
+            case "bookingeo" -> output = "FROM BookingEO "; //TODO
+
         }
         return output;
     }
@@ -133,6 +144,7 @@ public class DataOps<T> implements CrudOps<T>{
             case "usereo" -> output = "FROM UserEO";
             case "resourceeo" -> output = "FROM ResourceEO";
             case "bookingeo" -> output = "FROM BookingEO";
+            case "report" -> output = "FROM Report";
         }
         return output;
     }
