@@ -4,21 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
 public class ReportItem implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "report_item_id")
-    private Long id;
-    @Column(name = "booking_id")
+
     private long bookingId;
-    @Column(name = "user_name")
     private String userName;
-    @Column(name = "art_num")
     private String resourceArtNum;
-    @Column(name = "resource_description")
     private String resourceDescription;
-    @Column(name = "return_date")
     private LocalDate returnDate;
 
     public ReportItem() {

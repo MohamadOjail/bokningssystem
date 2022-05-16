@@ -42,4 +42,5 @@ public class BookingEO implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "booking_status", nullable = false)
     private BookingStatus status;
+
 }
