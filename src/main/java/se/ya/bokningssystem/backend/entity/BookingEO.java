@@ -12,10 +12,25 @@ import java.time.LocalDate;
 @Table(name = "booking")
 @Setter
 @Getter
-@NamedQuery(name = "byUser", query = "FROM BookingEO c WHERE c.user= :user ")
-@NamedQuery(name = "byResource", query = "FROM BookingEO c WHERE c.resource = :resource")
-@NamedQuery(name = "byStatus", query = "FROM BookingEO c WHERE c.status = :status")
+@NamedQueries(
+        {
+                @NamedQuery(name = "by_overdue",
+                        query = "FROM BookingEO b WHERE b.status = 'OVERDUE'"),
+                @NamedQuery(name = "by_overdue_by_user",
+                        query = "FROM BookingEO b WHERE b.status = 'OVERDUE' AND b.user = :input"),
+                @NamedQuery(name = "by_user",
+                        query = "FROM BookingEO b WHERE b.user = :input"),
+                @NamedQuery(name = "by_resource",
+                        query = "FROM BookingEO b WHERE b.resource = :input"),
+                @NamedQuery(name = "by_status",
+                        query = "FROM BookingEO b WHERE b.status = :input"),
+        }
+)
 public class BookingEO implements Serializable {
+
+    public BookingEO() {
+        this.status = BookingStatus.ACTIVE;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

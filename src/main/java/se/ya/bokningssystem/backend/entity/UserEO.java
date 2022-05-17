@@ -39,7 +39,7 @@ public class UserEO implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name="borrower_status", nullable = false)
-    private BorrowStatus state;
+    private BorrowStatus state = BorrowStatus.TRUE;
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<BookingEO> bookings = new ArrayList<>();

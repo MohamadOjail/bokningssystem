@@ -1,15 +1,34 @@
 package se.ya.bokningssystem;
 
+import se.ya.bokningssystem.backend.dao.BookingDAO;
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.dao.UserDAO;
+import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public class DummyData {
+
+    public static void generateBookings(){
+        BookingDAO bookingDAO = new BookingDAO();
+        ResourceDAO resourceDAO = new ResourceDAO();
+        UserDAO userDAO = new UserDAO();
+        Random rnd = new Random();
+        for (int i = 1; i <= 6; i++) {
+            BookingEO bookingEO = new BookingEO();
+            bookingEO.setBookingDate(LocalDate.of(2022, 05,i));
+            bookingEO.setReturnDate(LocalDate.of(2022, 05,i+2));
+            bookingEO.setResource(resourceDAO.getById(rnd.nextLong(2) + 1));
+            bookingEO.setUser(userDAO.getById(rnd.nextLong(5) + 1));
+            bookingEO.setReminderDate(LocalDate.of(2022, 05,i+1));
+            bookingDAO.add(bookingEO);
+        }
+    }
 
     public static void generateUsers(){
         UserDAO userDAO = new UserDAO();
