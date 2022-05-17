@@ -41,7 +41,7 @@ public class UserEO implements Serializable {
     @Column(name="borrower_status", nullable = false)
     private BorrowStatus state = BorrowStatus.TRUE;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<BookingEO> bookings = new ArrayList<>();
 
     // Utility Methods

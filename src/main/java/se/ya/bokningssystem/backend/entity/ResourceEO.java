@@ -23,6 +23,9 @@ import java.time.LocalDate;
         }
 )
 public class ResourceEO implements Serializable {
+    public ResourceEO() {
+        this.availableDate = LocalDate.now();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

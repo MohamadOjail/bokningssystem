@@ -90,4 +90,15 @@ public class ResourceDAO implements CrudOps<ResourceEO> {
         session.getTransaction().commit();
         CrudOps.endSession(session);
     }
+
+    public Long getResourceCount(){
+        Long count = 0L;
+        Session session = factory.openSession();
+        session.beginTransaction();
+        TypedQuery<Long> query = session.createQuery("SELECT COUNT(*) FROM ResourceEO ");
+        count = (Long)query.getSingleResult();
+        session.getTransaction().commit();
+        CrudOps.endSession(session);
+        return count;
+    }
 }

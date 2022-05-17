@@ -7,6 +7,7 @@ import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,5 +88,16 @@ public class UserDAO implements CrudOps<UserEO> {
         session.delete(userEO);
         session.getTransaction().commit();
         CrudOps.endSession(session);
+    }
+
+    public Long getUserCount(){
+        Long count = 0L;
+        Session session = factory.openSession();
+        session.beginTransaction();
+        TypedQuery<Long> query = session.createQuery("SELECT COUNT(*) FROM UserEO");
+        count = (Long)query.getSingleResult();
+        session.getTransaction().commit();
+        CrudOps.endSession(session);
+        return count;
     }
 }

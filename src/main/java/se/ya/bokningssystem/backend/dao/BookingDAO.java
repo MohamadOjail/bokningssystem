@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.entity.BookingEO;
+import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
@@ -113,6 +114,9 @@ public class BookingDAO implements CrudOps<BookingEO> {
             if (isOverdue(bookingEO)){
                 bookingEO.setStatus(BookingStatus.OVERDUE);
                 session.update(bookingEO);
+                ResourceEO resourceEO = bookingEO.getResource();
+                resourceEO.setAvailableDate(null);
+                session.update(resourceEO);
                 output.add(bookingEO);
             }
         }
