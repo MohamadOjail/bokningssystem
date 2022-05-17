@@ -2,6 +2,7 @@ package se.ya.bokningssystem.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,10 +17,9 @@ import java.util.List;
         {
                 @NamedQuery(name = "get_by_first_or_last_name",
                         query = "FROM UserEO u WHERE u.firstName LIKE :input OR u.lastName LIKE :input"),
-                @NamedQuery(name = "get_by_is_allowed",
-                        query = "FROM UserEO u WHERE u.firstName = :input") //TODO
+                @NamedQuery(name = "get_by_state",
+                        query = "FROM UserEO u WHERE u.state = :input")
         }
-
 )
 public class UserEO implements Serializable {
 
@@ -36,6 +36,10 @@ public class UserEO implements Serializable {
 
     @Column(name = "email", nullable = false)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="borrower_status", nullable = false)
+    private BorrowStatus state;
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<BookingEO> bookings = new ArrayList<>();

@@ -4,6 +4,7 @@ import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.dao.UserDAO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
+import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 
 import java.util.Random;
@@ -16,6 +17,7 @@ public class DummyData {
             UserEO user = new UserEO();
             user.setFirstName(generateWord(6));
             user.setLastName(generateWord(6));
+            user.setState(BorrowStatus.TRUE);
             user.setEmail(generateWord(5) + "@" + generateWord(5) + "." + generateWord(3));
             userDAO.add(user);
         }

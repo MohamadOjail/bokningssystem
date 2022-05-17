@@ -2,12 +2,10 @@ package se.ya.bokningssystem.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import se.ya.bokningssystem.backend.dao.BookingDAO;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +40,13 @@ public class Report implements Serializable {
 //    }
 
     private List<BookingEO> getBookings(){
-        BookingDAO bookingDAO = new BookingDAO();
-        List<BookingEO> bookings = new ArrayList<>();
-        String[] ids = this.bookingIds.split(",");
-        for (String foundId : ids){
-            long id = Long.parseLong(foundId);
-            bookings.add(bookingDAO.getById(id));
-        }
-        return bookings;
+//        BookingDAO bookingDAO = new BookingDAO();
+//        List<BookingEO> bookings = new ArrayList<>();
+//        String[] ids = this.bookingIds.split(",");
+//        for (String foundId : ids){
+//            long id = Long.parseLong(foundId);
+//            bookings.add(bookingDAO.getById(id));
+//        }
+        return null;
     }
 }

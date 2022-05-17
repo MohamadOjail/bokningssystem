@@ -15,16 +15,16 @@ public class UserSearchFieldListener implements ChangeListener<String> {
 
     @Override
     public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-        ResourceDAO resourceDAO = new ResourceDAO();
-        uc.getResources().clear();
-        if (!uc.getTf_search().getText().isEmpty()) {
-
-            Threader.execute(
-                    () -> {
-                        uc.getResources().clear();
-                        uc.getResources().addAll(resourceDAO.findByWildCard(uc.getTf_search().getText()));
-                    }
-            );
-        }
+//        ResourceDAO resourceDAO = new ResourceDAO();
+//        uc.getResources().clear();
+//        if (!uc.getTf_search().getText().isEmpty()) {
+//
+//            Threader.execute(
+//                    () -> {
+//                        uc.getResources().clear();
+//                        uc.getResources().addAll(resourceDAO.findByWildCard(uc.getTf_search().getText()));
+//                    }
+//            );
+//        }
     }
 }
