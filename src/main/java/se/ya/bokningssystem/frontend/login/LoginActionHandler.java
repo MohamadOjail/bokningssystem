@@ -26,19 +26,19 @@ public class LoginActionHandler implements EventHandler<ActionEvent> {
 
         if (isUser) {
 
-            Threader.execute(
-                    () -> {
-                        byInput = userDAO.getByInput(lc.getTf_user_name().getText());
-                        ObjectHolder.get().setCurrentUser(byInput);
-                    },
-                    () -> {
-                        if (byInput == null){
-                            new Alert(Alert.AlertType.ERROR, "user not found").showAndWait();
-                        }else {
-                            Switcher.get().loadScene(Views.USER);
-                        }
-                    }
-            );
+//            Threader.execute(
+//                    () -> {
+//                        byInput = userDAO.getByInput(lc.getTf_user_name().getText());
+//                        ObjectHolder.get().setCurrentUser(byInput);
+//                    },
+//                    () -> {
+//                        if (byInput == null){
+//                            new Alert(Alert.AlertType.ERROR, "user not found").showAndWait();
+//                        }else {
+//                            Switcher.get().loadScene(Views.USER);
+//                        }
+//                    }
+//            );
         }
 
         if (!isUser){

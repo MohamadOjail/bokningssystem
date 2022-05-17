@@ -8,7 +8,7 @@ import se.ya.bokningssystem.backend.entity.UserEO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataOps<T> implements CrudOps<T>{
+public class DataOps1<T> implements CrudOps1<T> {
 
     private final SessionFactory factory = Factory.getFactory();
     private final Session session = factory.openSession();
@@ -24,7 +24,7 @@ public class DataOps<T> implements CrudOps<T>{
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
         return t;
     }
 
@@ -40,7 +40,7 @@ public class DataOps<T> implements CrudOps<T>{
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
         return t;
     }
 
@@ -59,7 +59,7 @@ public class DataOps<T> implements CrudOps<T>{
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
         return t;
     }
 
@@ -85,7 +85,7 @@ public class DataOps<T> implements CrudOps<T>{
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
         return t;
     }
 
@@ -117,7 +117,7 @@ public class DataOps<T> implements CrudOps<T>{
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
     }
 
     @Override
@@ -144,7 +144,7 @@ public class DataOps<T> implements CrudOps<T>{
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
         return output;
     }
 

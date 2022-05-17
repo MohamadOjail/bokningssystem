@@ -12,6 +12,15 @@ import java.util.List;
 @Table(name = "user")
 @Setter
 @Getter
+@NamedQueries(
+        {
+                @NamedQuery(name = "get_by_first_or_last_name",
+                        query = "FROM UserEO u WHERE u.firstName LIKE :input OR u.lastName LIKE :input"),
+                @NamedQuery(name = "get_by_is_allowed",
+                        query = "FROM UserEO u WHERE u.firstName = :input") //TODO
+        }
+
+)
 public class UserEO implements Serializable {
 
     @Id
@@ -43,4 +52,5 @@ public class UserEO implements Serializable {
     public void clearBookings(){
         this.bookings.clear();
     }
+
 }

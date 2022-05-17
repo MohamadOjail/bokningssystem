@@ -6,8 +6,8 @@ import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
-import se.ya.bokningssystem.backend.util.CrudOps;
-import se.ya.bokningssystem.backend.util.DataOps;
+import se.ya.bokningssystem.backend.util.CrudOps1;
+import se.ya.bokningssystem.backend.util.DataOps1;
 import se.ya.bokningssystem.backend.util.Factory;
 
 import java.io.Serializable;
@@ -18,7 +18,7 @@ import java.util.Locale;
 public class BookingDAO {
 
     public BookingEO add(BookingEO bookingEO) {
-        DataOps<BookingEO> dataOps = new DataOps<>();
+        DataOps1<BookingEO> dataOps = new DataOps1<>();
         return dataOps.add(bookingEO, BookingEO.class);
     }
 
@@ -27,12 +27,12 @@ public class BookingDAO {
     }
 
     public BookingEO update(BookingEO bookingEO) {
-        DataOps<BookingEO> dataOps = new DataOps<>();
+        DataOps1<BookingEO> dataOps = new DataOps1<>();
         return dataOps.update(bookingEO, BookingEO.class);
     }
 
     public void delete(long id) {
-        DataOps<BookingEO> dataOps = new DataOps<>();
+        DataOps1<BookingEO> dataOps = new DataOps1<>();
         dataOps.delete(id, BookingEO.class);
     }
 
@@ -71,7 +71,7 @@ public class BookingDAO {
 //            new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
             System.out.println("Error! " + e.getLocalizedMessage());
         }
-        CrudOps.endSession(factory, session);
+        CrudOps1.endSession(factory, session);
         return output;
     }
 }

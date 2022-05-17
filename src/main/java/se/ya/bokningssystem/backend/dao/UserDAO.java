@@ -1,51 +1,46 @@
 package se.ya.bokningssystem.backend.dao;
 
 import se.ya.bokningssystem.backend.entity.UserEO;
-import se.ya.bokningssystem.backend.util.DataOps;
+import se.ya.bokningssystem.backend.implementation.UserDaoImpl;
+import se.ya.bokningssystem.backend.util.CrudOps;
+import se.ya.bokningssystem.backend.util.DataOps1;
 
 import java.util.List;
 
-public class UserDAO implements DaoOps<UserEO> {
-
+public class UserDAO implements CrudOps<UserEO> {
+    private final UserDaoImpl daoImpl = new UserDaoImpl();
     @Override
     public UserEO add(UserEO userEO) {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        return dataOps.add(userEO, UserEO.class);
+        return daoImpl.add(userEO);
     }
 
     @Override
-    public UserEO getById(long id) {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        return dataOps.getById(id, UserEO.class);
+    public UserEO getById(Long id) {
+        return daoImpl.getById(id);
     }
 
     @Override
-    public UserEO getByInput(String input) {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        return dataOps.getByInput(input, UserEO.class);
+    public UserEO getByNamedQuery(String queryName, String param) {
+        return null; // todo
     }
 
     @Override
-    public UserEO update(UserEO userEO) {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        return dataOps.update(userEO, UserEO.class);
-    }
-
-    @Override
-    public void delete(long id) {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        dataOps.delete(id, UserEO.class);
+    public List<UserEO> getListByNamedQuery(String queryName, String param) {
+        return daoImpl.getListByNamedQuery(queryName, param);
     }
 
     @Override
     public List<UserEO> findAll() {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        return dataOps.findAll(UserEO.class);
+        return null;
     }
 
     @Override
-    public List<UserEO> findByWildCard(String input) {
-        DataOps<UserEO> dataOps = new DataOps<>();
-        return dataOps.findByWildCard(input, UserEO.class);
+    public UserEO update(UserEO userEO) {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
     }
 }

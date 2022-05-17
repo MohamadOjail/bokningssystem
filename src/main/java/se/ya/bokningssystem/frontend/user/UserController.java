@@ -10,7 +10,7 @@ import lombok.Setter;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
-import se.ya.bokningssystem.backend.entity.enums.state;
+import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
 
@@ -25,7 +25,7 @@ public class UserController {
     @FXML private TableColumn<BookingEO, BookingStatus> col_bkngs_status;
     @FXML private TableColumn<ResourceEO, LocalDateTime> col_rscs_available_date;
     @FXML private TableColumn<ResourceEO, String> col_rscs_resources;
-    @FXML private TableColumn<ResourceEO, state> col_rscs_status;
+    @FXML private TableColumn<ResourceEO, ResourceStatus> col_rscs_status;
     @FXML private Label lbl_log_out, lbl_user_name;
     @FXML private TextField tf_search;
     @FXML private TableView<BookingEO> tv_bookings;
