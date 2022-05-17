@@ -2,7 +2,7 @@ package se.ya.bokningssystem.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import se.ya.bokningssystem.backend.entity.enums.state;
+import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,7 +25,7 @@ public class ResourceEO implements Serializable {
     private String description;
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
-    private state status;
+    private BorrowStatus status;
 
     private LocalDate availableDate;
 }

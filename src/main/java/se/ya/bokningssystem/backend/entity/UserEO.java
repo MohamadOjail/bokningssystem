@@ -2,6 +2,7 @@ package se.ya.bokningssystem.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,6 +28,10 @@ public class UserEO implements Serializable {
 
     @Column(name = "email", nullable = false)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="borrower_status", nullable = false)
+    private BorrowStatus state;
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<BookingEO> bookings = new ArrayList<>();
