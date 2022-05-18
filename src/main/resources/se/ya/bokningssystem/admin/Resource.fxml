@@ -29,8 +29,8 @@
                         <VBox>
                            <children>
                               <Label text="Hitta resurs" />
-                              <TextField />
-                              <ListView prefHeight="200.0" prefWidth="200.0">
+                              <TextField fx:id="tf_find_resource" />
+                              <ListView fx:id="lv_resourcelist" prefHeight="200.0" prefWidth="200.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -42,8 +42,8 @@
                         </VBox>
                         <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
                            <children>
-                              <Button id="opsBtn" mnemonicParsing="false" text="Redigera" />
-                              <Button id="opsBtn" layoutX="409.0" layoutY="10.0" mnemonicParsing="false" text="Radera" />
+                              <Button id="opsBtn" fx:id="btn_edit_resource" mnemonicParsing="false" onMouseClicked="#edit_resource" text="Redigera" />
+                              <Button id="opsBtn" fx:id="btn_delete_resource" layoutX="409.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#delete_resource" text="Radera" />
                            </children>
                            <padding>
                               <Insets right="20.0" />
@@ -54,7 +54,7 @@
                               <VBox>
                                  <children>
                                     <Label text="Beskrivning:" />
-                                    <TextField />
+                                    <TextField fx:id="tf_description_resource" />
                                  </children>
                               </VBox>
                               <VBox layoutX="10.0" layoutY="10.0">
@@ -71,7 +71,7 @@
                               </VBox>
                               <HBox alignment="BOTTOM_RIGHT">
                                  <children>
-                                    <Button id="opsBtn" mnemonicParsing="false" text="Uppdatera" />
+                                    <Button id="opsBtn" fx:id="btn_update_resource" mnemonicParsing="false" onMouseClicked="#update_resource" text="Uppdatera" />
                                  </children>
                               </HBox>
                            </children>
@@ -90,7 +90,7 @@
                         <VBox>
                            <children>
                               <Label text="Beskrivning:" />
-                              <TextField />
+                              <TextField fx:id="tf_description" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0">
@@ -99,15 +99,15 @@
                               <ChoiceBox prefWidth="150.0" />
                            </children>
                         </VBox>
-                        <VBox layoutX="10.0" layoutY="73.0">
+                        <VBox layoutX="10.0" layoutY="73.0" prefHeight="33.0" prefWidth="280.0">
                            <children>
-                              <Label text="Tillgämglighetsdatum" />
-                              <DatePicker />
+                              <Label text="Artikelnummer" />
+                              <TextField fx:id="tf_artnr" />
                            </children>
                         </VBox>
                         <HBox alignment="BOTTOM_RIGHT">
                            <children>
-                              <Button id="opsBtn" mnemonicParsing="false" text="Lägg till" />
+                              <Button id="opsBtn" fx:id="btn_add_resource" mnemonicParsing="false" onMouseClicked="#addResource" text="Lägg till" />
                            </children>
                         </HBox>
                      </children>

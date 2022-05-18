@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
 <VBox id="window" alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.user.UserController">
    <children>
       <VBox id="mainContainer" maxWidth="800.0" spacing="40.0" VBox.vgrow="NEVER">
@@ -50,8 +57,8 @@
                         <TableView fx:id="tv_resources" minHeight="450.0" minWidth="540.0">
                           <columns>
                             <TableColumn fx:id="col_rscs_resources" minWidth="250.0" prefWidth="75.0" text="Resurs" />
-                            <TableColumn fx:id="col_rscs_status" minWidth="100.0" prefWidth="75.0" text="status" />
-                              <TableColumn fx:id="col_rscs_available_date" minWidth="180.0" prefWidth="75.0" text="tillgänglig" />
+                              <TableColumn fx:id="col_rscs_available_date" minWidth="180.0" prefWidth="75.0" text="Artikelnummer" />
+                            <TableColumn fx:id="col_rscs_status" minWidth="100.0" prefWidth="109.0" text="status" />
                           </columns>
                         </TableView>
                         <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
