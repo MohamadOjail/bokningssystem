@@ -22,16 +22,16 @@
                   <VBox id="container">
                      <children>
                         <Label text="Hitta med: Förnamn eller  efternamn" />
-                        <TextField />
-                        <ListView prefHeight="200.0" prefWidth="200.0">
+                        <TextField fx:id="tf_find_user" />
+                        <ListView fx:id="lv_user_list" prefHeight="200.0" prefWidth="200.0">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </ListView>
                         <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
                            <children>
-                              <Button id="opsBtn" mnemonicParsing="false" text="Redigera" />
-                              <Button id="opsBtn" layoutX="409.0" layoutY="10.0" mnemonicParsing="false" text="Radera" />
+                              <Button id="opsBtn" fx:id="btn_edit_users" mnemonicParsing="false" onMouseClicked="#edit_user" text="Redigera" />
+                              <Button id="opsBtn" fx:id="btn_delete_user" layoutX="409.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#delete_user" text="Radera" />
                            </children>
                         </HBox>
                      </children>
@@ -44,30 +44,24 @@
                         <VBox>
                            <children>
                               <Label text="Förnamn" />
-                              <TextField disable="true" />
+                              <TextField fx:id="tf_first_name" disable="true" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0">
                            <children>
                               <Label text="Efternamn" />
-                              <TextField disable="true" />
+                              <TextField fx:id="tf_last_name" disable="true" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="73.0">
                            <children>
                               <Label text="e-post" />
-                              <TextField disable="true" />
-                           </children>
-                        </VBox>
-                        <VBox layoutX="10.0" layoutY="136.0">
-                           <children>
-                              <Label text="telefon" />
-                              <TextField disable="true" />
+                              <TextField fx:id="tf_email" disable="true" />
                            </children>
                         </VBox>
                         <HBox alignment="BOTTOM_RIGHT">
                            <children>
-                              <Button id="opsBtn" mnemonicParsing="false" text="Spara" />
+                              <Button id="opsBtn" fx:id="btn_save_user" mnemonicParsing="false" onMouseClicked="#update_user" text="Spara" />
                            </children>
                         </HBox>
                      </children>
@@ -86,30 +80,24 @@
                   <VBox>
                      <children>
                         <Label text="Förnamn" />
-                        <TextField />
+                        <TextField fx:id="tf_add_first_name" />
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="10.0">
                      <children>
                         <Label text="Efternamn" />
-                        <TextField />
+                        <TextField fx:id="tf_add_last_name" />
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="73.0">
                      <children>
                         <Label text="e-post" />
-                        <TextField />
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="136.0">
-                     <children>
-                        <Label text="telefon" />
-                        <TextField />
+                        <TextField fx:id="tf_add_email" />
                      </children>
                   </VBox>
                   <HBox alignment="BOTTOM_RIGHT">
                      <children>
-                        <Button id="opsBtn" mnemonicParsing="false" text="Lägg till" />
+                        <Button id="opsBtn" fx:id="btn_add_user" mnemonicParsing="false" onMouseClicked="#add_user" text="Lägg till" />
                      </children>
                   </HBox>
                </children>
