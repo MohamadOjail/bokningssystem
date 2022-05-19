@@ -18,25 +18,15 @@ import java.time.LocalDate;
 public class BookingController {
 
     @FXML private Button btn_get_bookings;
-
     @FXML private TableColumn<BookingEO, LocalDate> tc_actual_return_date;
-
     @FXML private TableColumn<BookingEO, LocalDate> tc_booking_date;
-
     @FXML private TableColumn<BookingEO, ResourceEO> tc_booking_resource;
-
     @FXML private TableColumn<BookingEO, UserEO> tc_booking_user;
-
     @FXML private TableColumn<BookingEO, LocalDate> tc_reminder_date;
-
     @FXML private TableColumn<BookingEO, LocalDate> tc_return_date;
-
     @FXML private TableColumn<BookingEO, BookingStatus> tc_status;
-
     @FXML private TableView<BookingEO> tw_booking;
-
     private final ObservableList<BookingEO> bookings = FXCollections.observableArrayList();
-
 
     @FXML private void initialize(){
         tc_booking_user.setCellValueFactory(new PropertyValueFactory<>("user"));
@@ -51,10 +41,4 @@ public class BookingController {
         btn_get_bookings.setOnAction(handler);
     }
 
-
-
-    @FXML
-    void get_bookings(ActionEvent event) {
-        tw_booking.setItems(bookings);
-    }
 }

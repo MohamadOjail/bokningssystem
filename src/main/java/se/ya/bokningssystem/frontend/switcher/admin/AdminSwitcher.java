@@ -2,6 +2,7 @@ package se.ya.bokningssystem.frontend.switcher.admin;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class AdminSwitcher {
     private AdminSwitcher() {}
 
     private BorderPane admin_pane;
+    private VBox admin_container;
     @Getter(value = AccessLevel.NONE)
     @Setter(value = AccessLevel.NONE)
     protected String path;

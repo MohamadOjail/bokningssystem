@@ -5,12 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import lombok.Getter;
 import se.ya.bokningssystem.frontend.switcher.admin.AdminSwitcher;
 import se.ya.bokningssystem.frontend.switcher.admin.AdminViews;
 @Getter
 public class AdminController {
-
+    @FXML private VBox admin_container;
     @FXML private BorderPane admin_pane;
     @FXML private ToggleButton btn_booking, btn_resource, btn_user;
     @FXML private ToggleGroup t;
