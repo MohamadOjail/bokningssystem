@@ -15,8 +15,8 @@ public class Notify {
         checkUserBookings();
     }
 
-    private UserEO userEO;
-    private List<Notification> notifications = new ArrayList<>();
+    private final UserEO userEO;
+    private final List<Notification> notifications = new ArrayList<>();
 
     public List<Notification> getNotifications() {
         return notifications;

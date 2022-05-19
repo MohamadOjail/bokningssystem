@@ -13,7 +13,7 @@ import se.ya.bokningssystem.frontend.switcher.admin.AdminViews;
 public class AdminController {
     @FXML private VBox admin_container;
     @FXML private BorderPane admin_pane;
-    @FXML private ToggleButton btn_booking, btn_resource, btn_user;
+    @FXML private ToggleButton btn_booking, btn_resource, btn_user, btn_inventory, btn_report;
     @FXML private ToggleGroup t;
     @FXML private Button btn_logg_out;
 
@@ -27,6 +27,7 @@ public class AdminController {
         btn_user.setOnAction(actionHandler);
         btn_resource.setOnAction(actionHandler);
         btn_logg_out.setOnAction(actionHandler);
+        btn_inventory.setOnAction(actionHandler);
+        btn_report.setOnAction(actionHandler);
     }
-
 }
