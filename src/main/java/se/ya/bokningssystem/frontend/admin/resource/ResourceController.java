@@ -7,9 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import lombok.Data;
 import lombok.Getter;
-import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 

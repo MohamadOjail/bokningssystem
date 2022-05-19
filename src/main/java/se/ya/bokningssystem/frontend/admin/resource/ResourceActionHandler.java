@@ -2,7 +2,6 @@ package se.ya.bokningssystem.frontend.admin.resource;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import se.ya.bokningssystem.backend.dao.ResourceDAO;
 
 public class ResourceActionHandler implements EventHandler<ActionEvent> {
 

@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import se.ya.bokningssystem.backend.dao.BookingDAO;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;

@@ -2,7 +2,6 @@ package se.ya.bokningssystem.frontend.user;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.frontend.utils.Threader;
 
 public class UserSearchFieldListener implements ChangeListener<String> {
