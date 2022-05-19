@@ -19,16 +19,20 @@ public class AdminActionHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent e) {
         if (e.getSource() == ac.getBtn_user()){
             AdminSwitcher.get().loadScene(AdminViews.USER);
-//            AdminSwitcher.get().getAdmin_pane().setMaxWidth(700);
         }
         if (e.getSource() == ac.getBtn_resource()){
             AdminSwitcher.get().loadScene(AdminViews.RESOURCE);
-//            AdminSwitcher.get().getAdmin_pane().setMaxWidth(700);
         }
         if (e.getSource() == ac.getBtn_booking()){
             AdminSwitcher.get().loadScene(AdminViews.BOOKING);
-//            AdminSwitcher.get().getAdmin_pane().setMaxWidth(1000);
         }
+        if (e.getSource() == ac.getBtn_inventory()){
+            AdminSwitcher.get().loadScene(AdminViews.INVENTORY);
+        }
+        if (e.getSource() == ac.getBtn_report()){
+            AdminSwitcher.get().loadScene(AdminViews.REPORT);
+        }
+
 
         if (e.getSource() == ac.getBtn_logg_out()){
             Switcher.get().loadScene(Views.LOGIN);

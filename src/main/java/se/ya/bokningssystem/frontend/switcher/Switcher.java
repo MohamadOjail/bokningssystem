@@ -6,7 +6,6 @@ import javafx.scene.layout.BorderPane;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import se.ya.bokningssystem.frontend.switcher.admin.AdminSwitcher;
 
 import java.io.IOException;
 

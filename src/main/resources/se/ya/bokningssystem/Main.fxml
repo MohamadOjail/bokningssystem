@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
 <BorderPane fx:id="app_pane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.main.MainController">
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
@@ -19,4 +22,10 @@
          </BorderPane.margin>
       </HBox>
    </bottom>
+   <stylesheets>
+      <URL value="@styles/styles.css" />
+      <URL value="@styles/button.css" />
+      <URL value="@styles/tableview.css" />
+      <URL value="@styles/label.css" />
+   </stylesheets>
 </BorderPane>

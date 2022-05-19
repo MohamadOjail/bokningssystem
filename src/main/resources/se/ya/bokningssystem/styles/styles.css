@@ -15,7 +15,7 @@ TextField{
     -fx-border-color: #818181;
     -fx-border-radius: 2.5%;
     -fx-border-width: 1px;
-    -fx-padding: 15px;
+    -fx-padding: 25px;
 }
 
 #app_title{

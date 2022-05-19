@@ -117,7 +117,7 @@ public class UserDAO implements CrudOps<UserEO> {
         Session session = factory.openSession();
         session.beginTransaction();
         TypedQuery<Long> query = session.createQuery("SELECT COUNT(*) FROM UserEO");
-        count = (Long)query.getSingleResult();
+        count = query.getSingleResult();
         session.getTransaction().commit();
         CrudOps.endSession(session);
         return count;
