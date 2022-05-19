@@ -2,6 +2,7 @@ package se.ya.bokningssystem.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import se.ya.bokningssystem.backend.dao.BookingDAO;
 
 import javax.persistence.*;
 import java.io.Serializable;

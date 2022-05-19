@@ -3,14 +3,15 @@ package se.ya.bokningssystem.frontend.login;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import se.ya.bokningssystem.backend.dao.UserDAO;
 import se.ya.bokningssystem.backend.entity.UserEO;
+import se.ya.bokningssystem.backend.entity.enums.UserNamedQueries;
 import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
 import se.ya.bokningssystem.frontend.switcher.Switcher;
 import se.ya.bokningssystem.frontend.switcher.Views;
 import se.ya.bokningssystem.frontend.utils.Threader;
 
 public class LoginActionHandler implements EventHandler<ActionEvent> {
-
     private final LoginController lc;
     private UserEO byInput;
 
@@ -25,19 +26,19 @@ public class LoginActionHandler implements EventHandler<ActionEvent> {
 
         if (isUser) {
 
-//            Threader.execute(
-//                    () -> {
-//                        byInput = userDAO.getByInput(lc.getTf_user_name().getText());
-//                        ObjectHolder.get().setCurrentUser(byInput);
-//                    },
-//                    () -> {
-//                        if (byInput == null){
-//                            new Alert(Alert.AlertType.ERROR, "user not found").showAndWait();
-//                        }else {
-//                            Switcher.get().loadScene(Views.USER);
-//                        }
-//                    }
-//            );
+            Threader.execute(
+                    () -> {
+                        byInput = userDAO.getByNamedQuery(UserNamedQueries.BY_EMAIL.queryName, lc.getTf_user_name().getText());
+                        ObjectHolder.get().setCurrentUser(byInput);
+                    },
+                    () -> {
+                        if (byInput == null){
+                            new Alert(Alert.AlertType.ERROR, "user not found").showAndWait();
+                        }else {
+                            Switcher.get().loadScene(Views.USER);
+                        }
+                    }
+            );
         }
 
         if (!isUser){
