@@ -33,9 +33,9 @@ public class UserController {
 
     private UserEO currentUser;
 
-    private final ObservableList<ResourceEO> resources = FXCollections.observableArrayList();
-    private final ObservableList<BookingEO> bookings = FXCollections.observableArrayList();
 
+    private final ObservableList<BookingEO> bookings = FXCollections.observableArrayList();
+    private final ObservableList<ResourceEO> resources = FXCollections.observableArrayList();
     @FXML private void initialize(){
         ObjectHolder.get().getCurrentUser(this);
         lbl_user_name.setText(currentUser.getFirstName() + " " + currentUser.getLastName());
