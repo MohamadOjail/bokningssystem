@@ -7,6 +7,7 @@ import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ResourceDAO implements CrudOps<ResourceEO> {
     }
 
     @Override
-    public List<ResourceEO> getListByNamedQuery(String queryName, String param) {
+    public List<ResourceEO> getListByNamedQuery(String queryName, Serializable param) {
         List<ResourceEO> output = new ArrayList<>();
         Session session = factory.openSession();
         session.beginTransaction();

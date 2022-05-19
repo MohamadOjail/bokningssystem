@@ -3,8 +3,10 @@ package se.ya.bokningssystem.backend.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.dao.BookingDAO;
 import se.ya.bokningssystem.backend.dao.ReportDAO;
+import se.ya.bokningssystem.backend.dao.UserDAO;
 import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
 
 import javax.persistence.*;
@@ -17,6 +19,7 @@ import java.util.List;
 @Table(name = "report")
 @Getter
 @Setter
+@NamedQuery(name = "tt", query = "FROM BookingEO b WHERE b.status = 'OVERDUE' AND b.user = :input")
 public class ReportEO implements Serializable {
 
     public ReportEO() {
@@ -43,7 +46,9 @@ public class ReportEO implements Serializable {
     private List<BookingEO> getOverdueBookings(Long userId){
         List<BookingEO> output = new ArrayList<>();
         BookingDAO bookingDAO = new BookingDAO();
-        output.addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_OVERDUE_BY_USER.queryName, userId + ""));
+        UserDAO userDAO = new UserDAO();
+        UserEO userEO = userDAO.getById(userId);
+        output.addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_OVERDUE_BY_USER.queryName, userEO));
         return output;
     }
     public void setBookingIds(){
@@ -53,6 +58,8 @@ public class ReportEO implements Serializable {
     }
 
     public void setBookingIds(Long userId){
+        BookingDAO bookingDAO = new BookingDAO();
+        bookingDAO.recheckStatus();
         this.bookingIds = extractIds(getOverdueBookings(userId));
     }
 

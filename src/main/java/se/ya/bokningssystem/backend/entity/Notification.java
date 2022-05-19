@@ -1,10 +1,14 @@
 package se.ya.bokningssystem.backend.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Notification {
 
     private Long bookingId;
@@ -19,6 +23,11 @@ public class Notification {
         this.returnDate = bookingEO.getReturnDate();
     }
 
-    public Notification() {}
-
+    @Override
+    public String toString() {
+        return "bookingId: " + bookingId +
+                ", artNum: " + resourceArtNum +
+                ", resource: " + resource +
+                ", return date: " + returnDate;
+    }
 }

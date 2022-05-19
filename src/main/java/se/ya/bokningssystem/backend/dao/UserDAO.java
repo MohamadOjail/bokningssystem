@@ -8,6 +8,7 @@ import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +19,26 @@ public class UserDAO implements CrudOps<UserEO> {
     public UserEO add(UserEO userEO) {
         Session session = factory.openSession();
         session.beginTransaction();
-        session.persist(userEO);
-        session.getTransaction().commit();
+        if (!userExists(userEO)) {
+            session.persist(userEO);
+            session.getTransaction().commit();
+        }
         CrudOps.endSession(session);
         return userEO;
+    }
+
+    private boolean userExists(UserEO userEO){
+        boolean output = false;
+        Session session = factory.openSession();
+        session.beginTransaction();
+        Query<UserEO> query = session.createQuery("FROM UserEO u WHERE u.firstName = :inputFirstName AND u.lastName = :inputLastName", UserEO.class);
+        query.setParameter("inputFirstName", userEO.getFirstName());
+        query.setParameter("inputLastName", userEO.getLastName());
+        List<UserEO> resultList = query.getResultList();
+        if (!resultList.isEmpty()) output = true;
+        session.getTransaction().commit();
+        CrudOps.endSession(session);
+        return output;
     }
 
     @Override
@@ -40,14 +57,19 @@ public class UserDAO implements CrudOps<UserEO> {
         session.beginTransaction();
         Query<UserEO> query = session.getNamedQuery(queryName);
         query.setParameter("input", param);
-        UserEO userEO = query.getSingleResult();
-        session.getTransaction().commit();
+        UserEO userEO = null;
+        try {
+            userEO = query.getSingleResult();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }
         CrudOps.endSession(session);
         return userEO;
     }
 
     @Override
-    public List<UserEO> getListByNamedQuery(String queryName, String param) {
+    public List<UserEO> getListByNamedQuery(String queryName, Serializable param) {
         List<UserEO> users = new ArrayList<>();
         Session session = factory.openSession();
         session.beginTransaction();

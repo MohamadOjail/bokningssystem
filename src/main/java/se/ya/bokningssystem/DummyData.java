@@ -6,7 +6,6 @@ import se.ya.bokningssystem.backend.dao.UserDAO;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
-import se.ya.bokningssystem.backend.entity.enums.BorrowStatus;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 
 import java.time.LocalDate;
@@ -75,7 +74,6 @@ public class DummyData {
             UserEO user = new UserEO();
             user.setFirstName(Lex.randomFirstName());
             user.setLastName(Lex.randomLastName());
-            user.setState(BorrowStatus.TRUE);
             user.setEmail(user.getFirstName().toLowerCase() + "." + user.getLastName().toLowerCase() + "@xlent" + "." + "se");
             userDAO.add(user);
         }

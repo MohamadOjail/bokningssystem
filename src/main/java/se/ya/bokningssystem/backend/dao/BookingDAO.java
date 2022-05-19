@@ -9,6 +9,8 @@ import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
+import javax.persistence.NamedQuery;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,7 @@ public class BookingDAO implements CrudOps<BookingEO> {
     }
 
     @Override
-    public List<BookingEO> getListByNamedQuery(String queryName, String param) {
+    public List<BookingEO> getListByNamedQuery(String queryName, Serializable param) {
         List<BookingEO> output = new ArrayList<>();
         Session session = factory.openSession();
         session.beginTransaction();

@@ -7,6 +7,7 @@ import se.ya.bokningssystem.backend.entity.ReportEO;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class ReportDAO implements CrudOps<ReportEO> {
     }
 
     @Override
-    public List<ReportEO> getListByNamedQuery(String queryName, String param) {
+    public List<ReportEO> getListByNamedQuery(String queryName, Serializable param) {
         return null;
     }
 
