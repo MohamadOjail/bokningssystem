@@ -1,7 +1,6 @@
 package se.ya.bokningssystem.backend.dao;
 
 import se.ya.bokningssystem.backend.entity.ResourceEO;
-import se.ya.bokningssystem.backend.util.DataOps;
 
 import java.util.List;
 

@@ -7,7 +7,6 @@ import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.util.CrudOps;
-import se.ya.bokningssystem.backend.util.DataOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
 import java.io.Serializable;
