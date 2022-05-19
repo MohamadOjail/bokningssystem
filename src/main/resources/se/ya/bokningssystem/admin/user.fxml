@@ -19,7 +19,7 @@
                   <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                </padding>
                <children>
-                  <VBox id="container">
+                  <VBox>
                      <children>
                         <Label text="Hitta med: Förnamn eller  efternamn" />
                         <TextField fx:id="tf_find_user" />
@@ -39,7 +39,7 @@
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <VBox id="container" spacing="20.0">
+                  <VBox spacing="20.0">
                      <children>
                         <VBox>
                            <children>
