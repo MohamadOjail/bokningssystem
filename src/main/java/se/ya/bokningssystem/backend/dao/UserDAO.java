@@ -43,10 +43,15 @@ public class UserDAO implements CrudOps<UserEO> {
 
     @Override
     public UserEO getById(Long id) {
+        UserEO userEO = null;
         Session session = factory.openSession();
-        session.beginTransaction();
-        UserEO userEO = session.find(UserEO.class, id);
-        session.getTransaction().commit();
+        try {
+            session.beginTransaction();
+            userEO = session.find(UserEO.class, id);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+//            throw new RuntimeException(e);
+        }
         CrudOps.endSession(session);
         return userEO;
     }
