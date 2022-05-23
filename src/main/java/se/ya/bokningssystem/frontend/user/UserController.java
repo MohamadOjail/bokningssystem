@@ -56,7 +56,7 @@ public class UserController {
             property.setValue(resource.getValue().getStatus().value);
             return property;
         });
-        col_rscs_available_date.setCellValueFactory(new PropertyValueFactory<>("availableDate"));
+        col_rscs_available_date.setCellValueFactory(new PropertyValueFactory<>("artNum"));
 
         UserSearchFieldListener searchFieldListener = new UserSearchFieldListener(this);
         tf_search.textProperty().addListener(searchFieldListener);

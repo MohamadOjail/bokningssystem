@@ -16,17 +16,17 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="15.0">
                <children>
-                  <TypeTextField title="Hitta med Namn" />
+                  <TypeTextField fx:id="tf_find_by_name" title="Hitta med Namn" />
                   <Label text="eller" />
-                  <TypeTextField title="hitta med id" />
+                  <TypeTextField fx:id="tf_find_by_id" title="hitta med id" />
                </children>
             </HBox>
-            <TableView>
+            <TableView fx:id="tv">
               <columns>
-                <TableColumn prefWidth="150.0" text="Förnamn" />
-                <TableColumn prefWidth="150.0" text="Efternamn" />
-                  <TableColumn prefWidth="300.0" text="E-mail" />
-                  <TableColumn prefWidth="100.0" text="Status" />
+                <TableColumn fx:id="col_f_name" prefWidth="150.0" text="Förnamn" />
+                <TableColumn fx:id="col_l_name" prefWidth="150.0" text="Efternamn" />
+                  <TableColumn fx:id="col_email" prefWidth="300.0" text="E-mail" />
+                  <TableColumn fx:id="col_status" prefWidth="100.0" text="Status" />
               </columns>
             </TableView>
             <HBox alignment="TOP_RIGHT" spacing="10.0">
@@ -34,8 +34,8 @@
                   <Insets bottom="10.0" left="10.0" top="5.0" />
                </padding>
                <children>
-                  <Button id="opsBtn" mnemonicParsing="false" text="Redigera" />
-                  <Button id="opsBtn" mnemonicParsing="false" text="Ta bort" />
+                  <Button id="opsBtn" fx:id="btn_edit" mnemonicParsing="false" text="Redigera" />
+                  <Button id="opsBtn" fx:id="btn_delete" mnemonicParsing="false" text="Ta bort" />
                </children>
             </HBox>
          </children>
@@ -51,12 +51,12 @@
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin></Label>
-                  <TypeTextField title="Förnamn" />
-                  <TypeTextField layoutX="20.0" layoutY="165.0" title="Efternamn" />
-                  <TypeTextField layoutX="20.0" layoutY="217.0" title="E-post" />
+                  <TypeTextField fx:id="tf_add_f_name" title="Förnamn" />
+                  <TypeTextField fx:id="tf_add_l_name" layoutX="20.0" layoutY="165.0" title="Efternamn" />
+                  <TypeTextField fx:id="tf_add_email" layoutX="20.0" layoutY="217.0" title="E-post" />
                   <Label text="Lånestatus" />
-                  <ChoiceBox prefHeight="25.0" prefWidth="382.0" />
-                  <Button id="opsBtn" mnemonicParsing="false" text="Lägg till" />
+                  <ChoiceBox fx:id="choice_add_status" prefHeight="25.0" prefWidth="382.0" />
+                  <Button id="opsBtn" fx:id="btn_add" mnemonicParsing="false" text="Lägg till" />
                </children>
             </VBox>
             <VBox id="container" layoutX="10.0" layoutY="10.0" spacing="10.0">
@@ -68,12 +68,12 @@
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin></Label>
-                  <TypeTextField title="Förnamn" />
-                  <TypeTextField layoutX="20.0" layoutY="165.0" title="Efternamn" />
-                  <TypeTextField layoutX="20.0" layoutY="217.0" title="E-post" />
+                  <TypeTextField fx:id="tf_edit_f_name" title="Förnamn" />
+                  <TypeTextField fx:id="tf_edit_l_name" layoutX="20.0" layoutY="165.0" title="Efternamn" />
+                  <TypeTextField fx:id="tf_edit_email" layoutX="20.0" layoutY="217.0" title="E-post" />
                   <Label text="Lånestatus" />
-                  <ChoiceBox prefHeight="25.0" prefWidth="382.0" />
-                  <Button id="opsBtn" mnemonicParsing="false" text="Redigera" />
+                  <ChoiceBox fx:id="coice_edit_status" prefHeight="25.0" prefWidth="382.0" />
+                  <Button id="opsBtn" fx:id="btn_save" disable="true" mnemonicParsing="false" text="Uppdatera" />
                </children>
             </VBox>
          </children>
