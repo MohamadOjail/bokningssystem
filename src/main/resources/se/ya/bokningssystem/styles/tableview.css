@@ -16,7 +16,7 @@ TableView .column-header {
 }
 
 TableView .table-cell{
-    /*-fx-text-fill: white;*/
+    -fx-text-fill: #040404;
 }
 
 .table-row-cell{
@@ -33,7 +33,8 @@ TableView .table-cell{
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #005797;
+    -fx-background-color: #f1e4bd;
+    /*-fx-text-fill: white;*/
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }

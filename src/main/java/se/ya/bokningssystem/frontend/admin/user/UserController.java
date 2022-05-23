@@ -50,6 +50,5 @@ public class UserController {
         tf_add_l_name.textProperty().addListener(addSectionListener);
         tf_add_email.textProperty().addListener(addSectionListener);
         choice_add_status.getSelectionModel().selectedItemProperty().addListener(addSectionListener);
-
     }
 }
