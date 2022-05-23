@@ -6,80 +6,120 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import ojail.mohamad.TypeTextField?>
 
 <VBox maxWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.admin.user.UserController">
-   <children>
-      <VBox id="container" spacing="15.0">
-         <children>
-            <HBox alignment="CENTER_LEFT" spacing="15.0">
-               <children>
-                  <TypeTextField fx:id="tf_find_by_name" title="Hitta med Namn" />
-                  <Label text="eller" />
-                  <TypeTextField fx:id="tf_find_by_id" title="hitta med id" />
-               </children>
-            </HBox>
-            <TableView fx:id="tv">
-              <columns>
-                <TableColumn fx:id="col_f_name" prefWidth="150.0" text="Förnamn" />
-                <TableColumn fx:id="col_l_name" prefWidth="150.0" text="Efternamn" />
-                  <TableColumn fx:id="col_email" prefWidth="300.0" text="E-mail" />
-                  <TableColumn fx:id="col_status" prefWidth="100.0" text="Status" />
-              </columns>
-            </TableView>
-            <HBox alignment="TOP_RIGHT" spacing="10.0">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" top="5.0" />
-               </padding>
-               <children>
-                  <Button id="opsBtn" fx:id="btn_edit" mnemonicParsing="false" text="Redigera" />
-                  <Button id="opsBtn" fx:id="btn_delete" mnemonicParsing="false" text="Ta bort" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <HBox spacing="20.0">
-         <children>
-            <VBox id="container" spacing="10.0">
-               <padding>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-               </padding>
-               <children>
-                  <Label text="Lägg till en användare">
-                     <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin></Label>
-                  <TypeTextField fx:id="tf_add_f_name" title="Förnamn" />
-                  <TypeTextField fx:id="tf_add_l_name" layoutX="20.0" layoutY="165.0" title="Efternamn" />
-                  <TypeTextField fx:id="tf_add_email" layoutX="20.0" layoutY="217.0" title="E-post" />
-                  <Label text="Lånestatus" />
-                  <ChoiceBox fx:id="choice_add_status" prefHeight="25.0" prefWidth="382.0" />
-                  <Button id="opsBtn" fx:id="btn_add" mnemonicParsing="false" text="Lägg till" />
-               </children>
-            </VBox>
-            <VBox id="container" layoutX="10.0" layoutY="10.0" spacing="10.0">
-               <padding>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-               </padding>
-               <children>
-                  <Label text="Redigera användaren">
-                     <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin></Label>
-                  <TypeTextField fx:id="tf_edit_f_name" title="Förnamn" />
-                  <TypeTextField fx:id="tf_edit_l_name" layoutX="20.0" layoutY="165.0" title="Efternamn" />
-                  <TypeTextField fx:id="tf_edit_email" layoutX="20.0" layoutY="217.0" title="E-post" />
-                  <Label text="Lånestatus" />
-                  <ChoiceBox fx:id="coice_edit_status" prefHeight="25.0" prefWidth="382.0" />
-                  <Button id="opsBtn" fx:id="btn_save" disable="true" mnemonicParsing="false" text="Uppdatera" />
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets top="15.0" />
-         </padding>
+   <VBox id="container" spacing="15.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="15.0">
+         <VBox>
+            <Label text="Hitta med namn" />
+            <TextField fx:id="tf_find_by_name" />
+         </VBox>
+         <Label text="eller" />
+         <VBox layoutX="10.0" layoutY="10.0">
+            <Label text="Hitta med id" />
+            <TextField fx:id="tf_find_by_id" />
+         </VBox>
       </HBox>
-   </children>
+      <TableView fx:id="tv">
+         <columns>
+            <TableColumn fx:id="col_f_name" prefWidth="150.0" text="Förnamn" />
+            <TableColumn fx:id="col_l_name" prefWidth="150.0" text="Efternamn" />
+            <TableColumn fx:id="col_email" prefWidth="300.0" text="E-mail" />
+            <TableColumn fx:id="col_status" prefWidth="100.0" text="Status" />
+         </columns>
+      </TableView>
+      <HBox alignment="TOP_RIGHT" spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" top="5.0" />
+         </padding>
+         <children>
+            <Button id="opsBtn" fx:id="btn_edit" mnemonicParsing="false" text="Redigera" />
+            <Button id="opsBtn" fx:id="btn_delete" mnemonicParsing="false" text="Ta bort" />
+         </children>
+      </HBox>
+   </VBox>
+   <HBox spacing="20.0">
+      <children>
+         <VBox id="container" spacing="10.0">
+            <padding>
+               <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+               <Label text="Lägg till en användare">
+                  <VBox.margin>
+                     <Insets bottom="15.0" />
+                  </VBox.margin>
+               </Label>
+               <VBox>
+                  <children>
+                     <Label text="Förnamn" />
+                     <TextField fx:id="tf_add_f_name" />
+                  </children>
+               </VBox>
+               <VBox layoutX="35.0" layoutY="77.0">
+                  <children>
+                     <Label text="Efternamn" />
+                     <TextField fx:id="tf_add_l_name" />
+                  </children>
+               </VBox>
+               <VBox layoutX="35.0" layoutY="129.0">
+                  <children>
+                     <Label text="Epost" />
+                     <TextField fx:id="tf_add_email" />
+                  </children>
+               </VBox>
+               <VBox>
+                  <children>
+                     <Label text="Lånestatus" />
+                     <ChoiceBox fx:id="choice_add_status" prefHeight="25.0" prefWidth="382.0" />
+                  </children>
+               </VBox>
+               <Button id="opsBtn" fx:id="btn_add" mnemonicParsing="false" text="Lägg till" />
+            </children>
+         </VBox>
+         <VBox id="container" layoutX="10.0" layoutY="25.0" spacing="10.0">
+            <padding>
+               <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+               <Label text="Redigera användarinfo">
+                  <VBox.margin>
+                     <Insets bottom="15.0" />
+                  </VBox.margin>
+               </Label>
+               <VBox>
+                  <children>
+                     <Label text="Förnamn" />
+                     <TextField fx:id="tf_edit_f_name" />
+                  </children>
+               </VBox>
+               <VBox layoutX="35.0" layoutY="77.0">
+                  <children>
+                     <Label text="Efternamn" />
+                     <TextField fx:id="tf_edit_l_name" />
+                  </children>
+               </VBox>
+               <VBox layoutX="35.0" layoutY="129.0">
+                  <children>
+                     <Label text="Epost" />
+                     <TextField fx:id="tf_edit_email" />
+                  </children>
+               </VBox>
+               <VBox>
+                  <children>
+                     <Label text="Lånestatus" />
+                     <ChoiceBox fx:id="choice_add_status1" prefHeight="25.0" prefWidth="382.0" />
+                  </children>
+               </VBox>
+               <Button id="opsBtn" fx:id="btn_update" mnemonicParsing="false" text="Uppdatera" />
+            </children>
+         </VBox>
+      </children>
+      <padding>
+         <Insets top="15.0" />
+      </padding>
+   </HBox>
 </VBox>
