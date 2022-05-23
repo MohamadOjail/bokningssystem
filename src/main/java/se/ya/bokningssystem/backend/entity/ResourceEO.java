@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NamedQueries(
         {
                 @NamedQuery(name = "get_by_art_num",
-                        query = "FROM ResourceEO r WHERE r.artNum = :input"),
+                        query = "FROM ResourceEO r WHERE r.artNum LIKE :input"),
                 @NamedQuery(name = "get_by_description",
                         query = "FROM ResourceEO r WHERE r.description LIKE :input"),
                 @NamedQuery(name = "get_by_status",

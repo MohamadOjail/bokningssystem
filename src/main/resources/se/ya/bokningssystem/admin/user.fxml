@@ -36,8 +36,8 @@
             <Insets bottom="10.0" left="10.0" top="5.0" />
          </padding>
          <children>
-            <Button id="opsBtn" fx:id="btn_edit" mnemonicParsing="false" text="Redigera" />
-            <Button id="opsBtn" fx:id="btn_delete" mnemonicParsing="false" text="Ta bort" />
+            <Button id="opsBtn" fx:id="btn_edit" disable="true" mnemonicParsing="false" text="Redigera" />
+            <Button id="opsBtn" fx:id="btn_delete" disable="true" mnemonicParsing="false" text="Ta bort" />
          </children>
       </HBox>
    </VBox>
@@ -77,7 +77,7 @@
                      <ChoiceBox fx:id="choice_add_status" prefHeight="25.0" prefWidth="382.0" />
                   </children>
                </VBox>
-               <Button id="opsBtn" fx:id="btn_add" mnemonicParsing="false" text="Lägg till" />
+               <Button id="opsBtn" fx:id="btn_add" disable="true" mnemonicParsing="false" text="Lägg till" />
             </children>
          </VBox>
          <VBox id="container" layoutX="10.0" layoutY="25.0" spacing="10.0">
@@ -111,10 +111,10 @@
                <VBox>
                   <children>
                      <Label text="Lånestatus" />
-                     <ChoiceBox fx:id="choice_add_status1" prefHeight="25.0" prefWidth="382.0" />
+                     <ChoiceBox fx:id="choice_edit_status" prefHeight="25.0" prefWidth="382.0" />
                   </children>
                </VBox>
-               <Button id="opsBtn" fx:id="btn_update" mnemonicParsing="false" text="Uppdatera" />
+               <Button id="opsBtn" fx:id="btn_update" disable="true" mnemonicParsing="false" text="Uppdatera" />
             </children>
          </VBox>
       </children>
