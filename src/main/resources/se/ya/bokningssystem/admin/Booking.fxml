@@ -2,32 +2,43 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import ojail.mohamad.TypeTextField?>
 
 <VBox xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.admin.booking.BookingController">
    <children>
-      <HBox spacing="20.0">
+      <HBox layoutX="10.0" layoutY="10.0" spacing="20.0">
          <children>
-            <TypeTextField title="Filtrera / användanamn" />
-            <TypeTextField layoutX="10.0" layoutY="10.0" title="Filtrera / resurs" />
+            <VBox>
+               <children>
+                  <Label text="Filtrera / användanamn" />
+                  <TextField fx:id="tf_by_user" />
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0">
+               <children>
+                  <Label text="Filtrera / resurs" />
+                  <TextField fx:id="tf_by_resource" />
+               </children>
+            </VBox>
          </children>
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <TableView>
+      <TableView fx:id="tv">
         <columns>
-          <TableColumn prefWidth="120.0" text="Användare" />
-          <TableColumn prefWidth="120.0" text="Resurs" />
-            <TableColumn prefWidth="160.0" text="Bokningsdatum" />
-            <TableColumn prefWidth="160.0" text="Återlämnas" />
-            <TableColumn prefWidth="160.0" text="Påminnelse" />
-            <TableColumn prefWidth="160.0" text="Återlämnad" />
-            <TableColumn prefWidth="100.0" text="Status" />
+          <TableColumn fx:id="col_user" prefWidth="120.0" text="Användare" />
+          <TableColumn fx:id="col_resource" prefWidth="120.0" text="Resurs" />
+            <TableColumn fx:id="col_booking_date" prefWidth="160.0" text="Bokningsdatum" />
+            <TableColumn fx:id="col_returl_date" prefWidth="160.0" text="Återlämnas" />
+            <TableColumn fx:id="col_reminder_date" prefWidth="160.0" text="Påminnelse" />
+            <TableColumn fx:id="col_actual_return_date" prefWidth="160.0" text="Återlämnad" />
+            <TableColumn fx:id="col_status" prefWidth="100.0" text="Status" />
         </columns>
       </TableView>
       <HBox alignment="TOP_RIGHT" spacing="10.0">
@@ -35,9 +46,9 @@
             <Insets bottom="10.0" left="10.0" top="5.0" />
          </padding>
          <children>
-            <Button id="opsBtn" mnemonicParsing="false" text="Markera som avsluten" />
-            <Button id="opsBtn" layoutX="796.0" layoutY="15.0" mnemonicParsing="false" text="Markera som försenad" />
-            <Button id="opsBtn" layoutX="794.0" layoutY="15.0" mnemonicParsing="false" text="Ta bort" />
+            <Button id="opsBtn" fx:id="btn_finish" mnemonicParsing="false" text="Markera som avsluten" />
+            <Button id="opsBtn" fx:id="btn_overdue" layoutX="796.0" layoutY="15.0" mnemonicParsing="false" text="Markera som försenad" />
+            <Button id="opsBtn" fx:id="btn_delete" layoutX="794.0" layoutY="15.0" mnemonicParsing="false" text="Ta bort" />
          </children>
       </HBox>
    </children>
