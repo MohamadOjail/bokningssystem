@@ -10,6 +10,8 @@ import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.frontend.admin.booking.BookingController;
 
+import java.time.LocalDate;
+
 public class ActionHandler implements EventHandler<ActionEvent> {
     private final BookingController bc;
     private final ResourceDAO resourceDAO = new ResourceDAO();
@@ -29,6 +31,7 @@ public class ActionHandler implements EventHandler<ActionEvent> {
             resourceEO.setStatus(ResourceStatus.AVAILABLE);
             BookingEO selectedBooking = bc.getTv().getSelectionModel().getSelectedItem();
             selectedBooking.setStatus(BookingStatus.FINISHED);
+            selectedBooking.setActualReturnDate(LocalDate.now());
             bookingDAO.update(selectedBooking);
             refreshBookingList();
         }
