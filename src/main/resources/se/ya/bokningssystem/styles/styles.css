@@ -42,3 +42,13 @@ TextField{
 DatePicker{
     -fx-font-size: 20;
 }
+
+#allowed{
+    -fx-background-color: #5ee600;
+}
+#allowed:hover{
+    -fx-text-fill: #11110e;
+}
+#not-allowed{
+    -fx-background-color: rgba(104, 104, 104, 0.2);
+}

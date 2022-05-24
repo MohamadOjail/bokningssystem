@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user")
@@ -19,7 +20,9 @@ import java.util.List;
                 @NamedQuery(name = "get_by_state",
                         query = "FROM UserEO u WHERE u.canBorrow = :input"),
                 @NamedQuery(name = "get_by_email",
-                        query = "FROM UserEO u WHERE u.email = :input AND u.canBorrow = true")
+                        query = "FROM UserEO u WHERE u.email = :input AND u.canBorrow = true"),
+                @NamedQuery(name = "get_singel_by_first_or_last_name",
+                        query = "FROM UserEO u WHERE u.firstName = :input OR u.lastName = :input ")
         }
 )
 public class UserEO implements Serializable {
@@ -57,4 +60,8 @@ public class UserEO implements Serializable {
         this.bookings.clear();
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }

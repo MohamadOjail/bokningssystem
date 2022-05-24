@@ -1,10 +1,14 @@
 package se.ya.bokningssystem.backend.dao;
 
+import javafx.scene.control.Alert;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
+import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
+import se.ya.bokningssystem.frontend.utils.Alerter;
 
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
@@ -39,10 +43,16 @@ public class ResourceDAO implements CrudOps<ResourceEO> {
     public ResourceEO getByNamedQuery(String queryName, String param) {
         Session session = factory.openSession();
         session.beginTransaction();
-        TypedQuery<ResourceEO> query = session.getNamedQuery(queryName);
+        Query<ResourceEO> query = session.getNamedQuery(queryName);
         query.setParameter("input", param);
-        ResourceEO resourceEO = query.getSingleResult();
-        session.getTransaction().commit();
+        ResourceEO resourceEO = null;
+        try {
+            resourceEO = query.getSingleResult();
+            Alerter.get().showMessage(Alert.AlertType.INFORMATION, resourceEO.getDescription());
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }
         CrudOps.endSession(session);
         return resourceEO;
     }

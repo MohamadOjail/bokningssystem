@@ -41,4 +41,9 @@ public class ResourceEO implements Serializable {
     private ResourceStatus status;
 
     private LocalDate availableDate;
+
+    @Override
+    public String toString() {
+        return description;
+    }
 }

@@ -14,6 +14,11 @@ public class ListChangeListener implements ChangeListener<BookingEO> {
 
     @Override
     public void changed(ObservableValue<? extends BookingEO> observableValue, BookingEO bookingEO, BookingEO t1) {
-
+        buttonEnabler(t1 == null);
+    }
+    private void buttonEnabler(boolean disable){
+        bc.getBtn_overdue().setDisable(disable);
+        bc.getBtn_delete().setDisable(disable);
+        bc.getBtn_finish().setDisable(disable);
     }
 }

@@ -30,14 +30,14 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <TableView fx:id="tv">
+      <TableView fx:id="tv" prefHeight="600.0">
         <columns>
-          <TableColumn fx:id="col_user" prefWidth="120.0" text="Användare" />
-          <TableColumn fx:id="col_resource" prefWidth="120.0" text="Resurs" />
-            <TableColumn fx:id="col_booking_date" prefWidth="160.0" text="Bokningsdatum" />
-            <TableColumn fx:id="col_returl_date" prefWidth="160.0" text="Återlämnas" />
-            <TableColumn fx:id="col_reminder_date" prefWidth="160.0" text="Påminnelse" />
-            <TableColumn fx:id="col_actual_return_date" prefWidth="160.0" text="Återlämnad" />
+          <TableColumn fx:id="col_user" prefWidth="180.0" text="Användare" />
+          <TableColumn fx:id="col_resource" prefWidth="140.0" text="Resurs" />
+            <TableColumn fx:id="col_booking_date" prefWidth="130.0" text="Utlånad" />
+            <TableColumn fx:id="col_returl_date" prefWidth="130.0" text="Återlämnas" />
+            <TableColumn fx:id="col_reminder_date" prefWidth="130.0" text="Påminnelse" />
+            <TableColumn fx:id="col_actual_return_date" prefWidth="130.0" text="Återlämnad" />
             <TableColumn fx:id="col_status" prefWidth="100.0" text="Status" />
         </columns>
       </TableView>
@@ -46,9 +46,9 @@
             <Insets bottom="10.0" left="10.0" top="5.0" />
          </padding>
          <children>
-            <Button id="opsBtn" fx:id="btn_finish" mnemonicParsing="false" text="Markera som avsluten" />
-            <Button id="opsBtn" fx:id="btn_overdue" layoutX="796.0" layoutY="15.0" mnemonicParsing="false" text="Markera som försenad" />
-            <Button id="opsBtn" fx:id="btn_delete" layoutX="794.0" layoutY="15.0" mnemonicParsing="false" text="Ta bort" />
+            <Button id="opsBtn" fx:id="btn_finish" disable="true" mnemonicParsing="false" text="Markera som avsluten" />
+            <Button id="opsBtn" fx:id="btn_overdue" disable="true" layoutX="796.0" layoutY="15.0" mnemonicParsing="false" text="Markera som försenad" />
+            <Button id="opsBtn" fx:id="btn_delete" disable="true" layoutX="794.0" layoutY="15.0" mnemonicParsing="false" text="Ta bort" />
          </children>
       </HBox>
    </children>

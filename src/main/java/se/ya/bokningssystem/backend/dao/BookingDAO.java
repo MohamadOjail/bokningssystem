@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
+import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
@@ -102,6 +103,10 @@ public class BookingDAO implements CrudOps<BookingEO> {
         Session session = factory.openSession();
         session.beginTransaction();
         BookingEO bookingEO = session.find(BookingEO.class, id);
+        UserEO userEO = bookingEO.getUser();
+        userEO.removeBooking(bookingEO);
+        session.update(userEO);
+
         session.delete(bookingEO);
         session.getTransaction().commit();
         CrudOps.endSession(session);
