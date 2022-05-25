@@ -15,16 +15,14 @@
       <VBox>
          <children>
             <HBox>
-               <children>
-                  <VBox>
-                     <children>
-                        <Label text="Hitta med resursnamn" />
-                        <TextField fx:id="tf_find_by_resource_name" />
-                     </children>
-                  </VBox>
-               </children>
+               <VBox>
+                  <children>
+                     <Label text="Hitta med artikelnummer"/>
+                     <TextField fx:id="tf_find_by_artnum"/>
+                  </children>
+               </VBox>
             </HBox>
-            <TableView>
+            <TableView fx:id="tv">
               <columns>
                 <TableColumn fx:id="tc_art_number" prefWidth="122.0" text="Artikelnummer" />
                 <TableColumn fx:id="tc_description" prefWidth="224.0" text="Beskrivning" />
@@ -34,7 +32,7 @@
             <HBox alignment="TOP_RIGHT" spacing="10.0">
                <children>
                   <Button id="opsBtn" fx:id="btn_get_resource" mnemonicParsing="false" text="Hämta alla" />
-                  <Button id="opsBtn" fx:id="btn_delete" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Ta bort" />
+                  <Button id="opsBtn" fx:id="btn_delete" alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" text="Ta bort" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -55,7 +53,7 @@
                   <TextField fx:id="tf_add_description" />
                   <Label text="Status" />
                   <ChoiceBox fx:id="cb_add_status" prefWidth="150.0" />
-                  <Button id="opsBtn" fx:id="btn_add_resource" mnemonicParsing="false" text="Lägg till" />
+                  <Button id="opsBtn" fx:id="btn_add_resource" disable="true" mnemonicParsing="false" text="Lägg till" />
                </children>
                <padding>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -69,7 +67,7 @@
                   <TextField fx:id="td_edit_description" />
                   <Label text="Status" />
                   <ChoiceBox fx:id="cb_edit_status" prefWidth="150.0" />
-                  <Button id="opsBtn" fx:id="btn_edit_resource" mnemonicParsing="false" text="Uppdatera" />
+                  <Button id="opsBtn" fx:id="btn_edit_resource" disable="true" mnemonicParsing="false" text="Uppdatera" />
                </children>
                <padding>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

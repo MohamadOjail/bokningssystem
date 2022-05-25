@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import se.ya.bokningssystem.backend.entity.ReportEO;
+
+import java.time.LocalDate;
 
 public class ReportController {
 
@@ -14,10 +17,10 @@ public class ReportController {
     private Button btn_get_report;
 
     @FXML
-    private TableColumn<?, ?> tc_booking_id;
+    private TableColumn<ReportEO, String> tc_booking_id;
 
     @FXML
-    private TableColumn<?, ?> tc_report_date;
+    private TableColumn<ReportEO, LocalDate> tc_report_date;
 
     @FXML
     private TextField tf_find_with_bookingid;
