@@ -2,44 +2,101 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.admin.report.ReportController">
-   <children>
-      <VBox>
-         <children>
-            <HBox spacing="20.0">
+
+<TabPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.bokningssystem.frontend.admin.report.ReportController">
+   <tabs>
+      <Tab text="Hantera rapporter">
+         <content>
+            <VBox alignment="CENTER">
                <children>
-                  <VBox />
                   <VBox>
                      <children>
-                        <Label text="Hitta med user id" />
-                        <TextField fx:id="tf_find_with_bookingid" />
+                        <Label text="Visa försenade bokningar" />
+                        <HBox spacing="20.0">
+                           <children>
+                              <VBox />
+                              <VBox />
+                           </children>
+                        </HBox>
+                        <TableView>
+                           <columns>
+                              <TableColumn fx:id="tc_user1" prefWidth="160.0" text="Användare" />
+                              <TableColumn fx:id="tc_resurs1" prefWidth="140.0" text="Resurs" />
+                              <TableColumn fx:id="tc_return1" prefWidth="140.0" text="Återlämning" />
+                              <TableColumn fx:id="tc_status1" prefWidth="120.0" text="Status" />
+                           </columns>
+                        </TableView>
+                        <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
+                           <children>
+                              <VBox alignment="BOTTOM_LEFT">
+                                 <children>
+                                    <Label text="Filtrera användare" />
+                                    <ChoiceBox fx:id="cb_user1" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="btn_reset1" mnemonicParsing="false" text="Återställ filter" />
+                              <Button id="opsBtn" fx:id="btn_save_report1" mnemonicParsing="false" text="Spara rapport" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
-            </HBox>
-            <TableView>
-              <columns>
-                <TableColumn fx:id="tc_report_date" prefWidth="298.0" text="Rapport datum" />
-                <TableColumn fx:id="tc_booking_id" prefWidth="298.0" text="Boknings id" />
-              </columns>
-            </TableView>
-            <HBox alignment="TOP_RIGHT" spacing="10.0">
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Ny rapport">
+         <content>
+            <VBox alignment="CENTER">
                <children>
-                  <Button id="opsBtn" fx:id="btn_get_report" mnemonicParsing="false" text="Hämta rapporter" />
-                  <Button id="opsBtn" fx:id="btn_delete_report" mnemonicParsing="false" text="Ta bort" />
+                  <VBox>
+                     <children>
+                        <Label text="Visa försenade bokningar" />
+                        <HBox spacing="20.0">
+                           <children>
+                              <VBox />
+                              <VBox />
+                           </children>
+                        </HBox>
+                        <TableView>
+                          <columns>
+                            <TableColumn fx:id="tc_user" prefWidth="160.0" text="Användare" />
+                            <TableColumn fx:id="tc_resurs" prefWidth="140.0" text="Resurs" />
+                              <TableColumn fx:id="tc_return" prefWidth="140.0" text="Återlämning" />
+                              <TableColumn fx:id="tc_status" prefWidth="120.0" text="Status" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
+                           <children>
+                              <VBox alignment="BOTTOM_LEFT">
+                                 <children>
+                                    <Label text="Filtrera användare" />
+                                    <ChoiceBox fx:id="cb_user" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="btn_reset" mnemonicParsing="false" text="Återställ filter" />
+                              <Button id="opsBtn" fx:id="btn_save_report" mnemonicParsing="false" text="Spara rapport" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" top="5.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
-</VBox>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
