@@ -39,8 +39,8 @@
                         </TableView>
                         <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
                            <children>
-                              <Button id="opsBtn" fx:id="btn_cancel_booking" mnemonicParsing="false" text="Avboka" />
-                              <Button id="opsBtn" fx:id="btn_return_resource" mnemonicParsing="false" text="Lämna tillbaka" />
+                              <Button id="opsBtn" fx:id="btn_cancel_booking" disable="true" mnemonicParsing="false" text="Avboka" />
+                              <Button id="opsBtn" fx:id="btn_return_resource" disable="true" mnemonicParsing="false" text="Lämna tillbaka" />
                            </children>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -62,7 +62,7 @@
                         </TableView>
                         <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
                            <children>
-                              <Button id="opsBtn" fx:id="btn_book" mnemonicParsing="false" text="Boka" />
+                              <Button id="opsBtn" fx:id="btn_book" disable="true" mnemonicParsing="false" text="Boka" />
                            </children>
                            <VBox.margin>
                               <Insets top="10.0" />
