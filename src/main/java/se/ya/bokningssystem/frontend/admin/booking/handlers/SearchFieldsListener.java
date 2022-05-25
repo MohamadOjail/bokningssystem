@@ -46,7 +46,6 @@ public class SearchFieldsListener implements ChangeListener<String> {
                 populateNoFilter();
                 return;
             }
-            populateNoFilter();
             if (!t1.isEmpty() && field.getBean().equals(bc.getTf_by_user())){
                 bc.getTf_by_resource().clear();
                 UserEO userEO = userDAO.getByNamedQuery(UserNamedQueries.SINGLE_BY_NAME.queryName, t1);
@@ -54,8 +53,8 @@ public class SearchFieldsListener implements ChangeListener<String> {
                     populateWithUser(userEO);
                     return;
                 }
-                populateNoFilter();
             }
+            populateNoFilter();
         }
     }
     private void populateWithUser(UserEO userEO){

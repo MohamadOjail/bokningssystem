@@ -64,6 +64,7 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
             root = loader.load();
             SetupController sc = loader.getController();
             sc.setUc(uc);
+            sc.setAvailableDate(uc.getTv_resources().getSelectionModel().getSelectedItem().getAvailableDate());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

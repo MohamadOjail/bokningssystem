@@ -18,15 +18,16 @@ public class SetupController {
     @FXML private DatePicker dp_booking_date, dp_return_date;
     @Setter
     private UserController uc;
+    @Setter
+    private LocalDate availableDate;
 
     @FXML private void initialize(){
-        dp_booking_date.setValue(null);
-        dp_return_date.setValue(null);
+        dp_booking_date.setValue(availableDate);
         dp_booking_date.setDayCellFactory(datePicker -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
-                if (item.isBefore(LocalDate.now())) {
+                if (item.isBefore(LocalDate.now()) || item.isBefore(availableDate)) {
                     setDisable(true);
                     setId("not-allowed");
                 }else setId("allowed");
