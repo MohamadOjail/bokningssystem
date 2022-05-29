@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.ya.bokningssystem.backend.dao.BookingDAO;
 
 import java.io.IOException;
 
@@ -15,6 +16,7 @@ public class MainWithFX extends Application {
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
+        new BookingDAO().recheckStatus();
     }
 
     public static void main(String[] args) {

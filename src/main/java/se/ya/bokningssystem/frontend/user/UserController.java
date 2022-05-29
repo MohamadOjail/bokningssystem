@@ -15,10 +15,7 @@ import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
-import se.ya.bokningssystem.frontend.user.handlers.BookingListChangeListener;
-import se.ya.bokningssystem.frontend.user.handlers.ResourceListChangeListener;
-import se.ya.bokningssystem.frontend.user.handlers.UserActionHandler;
-import se.ya.bokningssystem.frontend.user.handlers.UserSearchFieldListener;
+import se.ya.bokningssystem.frontend.user.handlers.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -64,11 +61,7 @@ public class UserController {
         bookings.addAll(new BookingDAO().getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, currentUser));
         col_bkngs_resources.setCellValueFactory(new PropertyValueFactory<>("resource"));
         col_bkngs_return_date.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
-        col_bkngs_status.setCellValueFactory(resource -> {
-            SimpleStringProperty property = new SimpleStringProperty();
-            property.setValue(resource.getValue().getStatus().value);
-            return property;
-        });
+        col_bkngs_status.setCellFactory(CellStyler::call);
 
         // Resource List Setup
         tv_resources.setItems(resources);

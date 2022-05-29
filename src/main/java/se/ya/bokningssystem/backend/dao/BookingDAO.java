@@ -118,7 +118,7 @@ public class BookingDAO implements CrudOps<BookingEO> {
         session.beginTransaction();
         Query<BookingEO> query = session.createQuery("FROM BookingEO");
         for (BookingEO bookingEO : query.getResultList()){
-            if (isOverdue(bookingEO)){
+            if (bookingEO.getActualReturnDate() != null && isOverdue(bookingEO)){
                 bookingEO.setStatus(BookingStatus.OVERDUE);
                 session.update(bookingEO);
                 ResourceEO resourceEO = bookingEO.getResource();

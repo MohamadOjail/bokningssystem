@@ -52,3 +52,7 @@ DatePicker{
 #not-allowed{
     -fx-background-color: rgba(104, 104, 104, 0.2);
 }
+
+#overdue{
+    -fx-text-fill: red;
+}

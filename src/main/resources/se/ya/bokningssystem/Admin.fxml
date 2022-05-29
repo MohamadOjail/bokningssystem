@@ -39,7 +39,7 @@
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin></ToggleButton>
-                              <ToggleButton id="tabBtn" fx:id="btn_report" layoutX="20.0" layoutY="80.0" mnemonicParsing="false" text="Rapport" toggleGroup="$t">
+                              <ToggleButton id="tabBtn-notif" fx:id="btn_report" layoutX="20.0" layoutY="80.0" mnemonicParsing="false" text="Rapport" toggleGroup="$t">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>

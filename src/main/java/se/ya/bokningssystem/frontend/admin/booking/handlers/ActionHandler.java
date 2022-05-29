@@ -29,11 +29,13 @@ public class ActionHandler implements EventHandler<ActionEvent> {
         if (e.getSource() == bc.getBtn_finish()){
             ResourceEO resourceEO = bc.getTv().getSelectionModel().getSelectedItem().getResource();
             resourceEO.setStatus(ResourceStatus.AVAILABLE);
+            resourceDAO.update(resourceEO);
             BookingEO selectedBooking = bc.getTv().getSelectionModel().getSelectedItem();
             selectedBooking.setStatus(BookingStatus.FINISHED);
             selectedBooking.setActualReturnDate(LocalDate.now());
             bookingDAO.update(selectedBooking);
             refreshBookingList();
+            bc.getTv().refresh();
         }
         if (e.getSource() == bc.getBtn_overdue()){
             ResourceEO resourceEO = bc.getTv().getSelectionModel().getSelectedItem().getResource();
