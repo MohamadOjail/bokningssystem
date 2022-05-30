@@ -16,7 +16,10 @@ public class ActionHandler implements EventHandler<ActionEvent> {
     private final BookingController bc;
     private final ResourceDAO resourceDAO = new ResourceDAO();
     private final BookingDAO bookingDAO = new BookingDAO();
-    public ActionHandler(BookingController bc) {this.bc = bc;}
+    private final FilterHelper filterHelper;
+    public ActionHandler(BookingController bc) {this.bc = bc;
+        this.filterHelper = new FilterHelper(bc);
+    }
 
     @Override
     public void handle(ActionEvent e) {
@@ -44,6 +47,10 @@ public class ActionHandler implements EventHandler<ActionEvent> {
             selectedBooking.setStatus(BookingStatus.OVERDUE);
             bookingDAO.update(selectedBooking);
             refreshBookingList();
+        }
+        if (e.getSource() == bc.getBtn_reset()){
+            filterHelper.resetFilterFields();
+            filterHelper.populateNoFilter();
         }
     }
 

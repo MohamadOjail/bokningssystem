@@ -5,13 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import lombok.Getter;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.frontend.admin.booking.handlers.ActionHandler;
+import se.ya.bokningssystem.frontend.admin.booking.handlers.FilterHelper;
 import se.ya.bokningssystem.frontend.admin.booking.handlers.ListChangeListener;
 import se.ya.bokningssystem.frontend.admin.booking.handlers.SearchFieldsListener;
 
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 
 @Getter
 public class BookingController {
-    @FXML private Button btn_delete, btn_finish, btn_overdue;
+    @FXML private Button btn_delete, btn_finish, btn_overdue, btn_reset;
     @FXML private TableColumn<BookingEO, LocalDate> col_actual_return_date;
     @FXML private TableColumn<BookingEO, LocalDate> col_booking_date;
     @FXML private TableColumn<BookingEO, LocalDate> col_reminder_date;
@@ -30,6 +30,7 @@ public class BookingController {
     @FXML private TextField tf_by_resource;
     @FXML private TextField tf_by_user;
     @FXML private TableView<BookingEO> tv;
+    @FXML private ChoiceBox<BookingStatus> choice_filter_status;
 
     private final ObservableList<BookingEO> bookings = FXCollections.observableArrayList();
     private final ObservableList<BookingEO> filteredBookings = FXCollections.observableArrayList();
@@ -83,10 +84,22 @@ public class BookingController {
         btn_delete.setOnAction(actionHandler);
         btn_finish.setOnAction(actionHandler);
         btn_overdue.setOnAction(actionHandler);
+        btn_reset.setOnAction(actionHandler);
 
         // TextField listener
         SearchFieldsListener searchFieldsListener = new SearchFieldsListener(this);
         tf_by_resource.textProperty().addListener(searchFieldsListener);
         tf_by_user.textProperty().addListener(searchFieldsListener);
+
+        // filter status listener
+        choice_filter_status.getItems().addAll(BookingStatus.values());
+        FilterHelper filterHelper = new FilterHelper(this);
+        choice_filter_status.getSelectionModel().selectedItemProperty().addListener((observableValue, status, t1) -> {
+            if (t1 != null){
+                tf_by_user.clear();
+                tf_by_resource.clear();
+                filterHelper.populateWithStatus(t1);
+            }
+        });
     }
 }

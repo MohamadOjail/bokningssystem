@@ -2,6 +2,7 @@ package se.ya.bokningssystem.frontend.admin.resource.handlers;
 
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.entity.enums.ResourceNamedQueries;
+import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.frontend.admin.resource.ResourceController;
 
 public class FindHelper {
@@ -23,11 +24,15 @@ public class FindHelper {
         populate(input, false);
     }
     public void populateResourceList(String input){
+        rc.getChoice_filter().getSelectionModel().select(null);
         if (!rc.getTf_find_by_artnumber().getText().isEmpty()){
             populate(input, true);
             return;
         }
         populate(input, false);
+    }
+    public void populateResourceList(ResourceStatus status){
+        filterBystatus(status);
     }
     private void populate(String input, boolean byArt){
         if (byArt){
@@ -41,5 +46,9 @@ public class FindHelper {
         rc.getResources().addAll(resourceDAO.getListByNamedQuery(
                 ResourceNamedQueries.GET_BY_DESCRIPTION.queryName, "%" + input + "%"
         ));
+    }
+    private void filterBystatus(ResourceStatus status){
+        rc.getResources().clear();
+        rc.getResources().addAll(resourceDAO.getListByNamedQuery(ResourceNamedQueries.GET_BY_STATUS.queryName, status));
     }
 }

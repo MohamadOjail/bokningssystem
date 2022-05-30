@@ -17,14 +17,17 @@
             <HBox>
                <VBox>
                   <children>
-                     <Label text="Hitta med artikelnummer"/>
-                     <TextField fx:id="tf_find_by_artnum"/>
+                     <Label text="Hitta med artikelnummer" />
+                     <TextField fx:id="tf_find_by_artnum" />
                   </children>
                </VBox>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
             <TableView fx:id="tv">
               <columns>
-                <TableColumn fx:id="tc_art_number" prefWidth="122.0" text="Artikelnummer" />
+                <TableColumn fx:id="tc_art_number" prefWidth="160.0" text="Artikelnummer" />
                 <TableColumn fx:id="tc_description" prefWidth="224.0" text="Beskrivning" />
                   <TableColumn fx:id="tc_status" prefWidth="148.0" text="Status" />
               </columns>
@@ -43,30 +46,30 @@
             </HBox>
          </children>
       </VBox>
-      <HBox>
+      <HBox spacing="25.0">
          <children>
-            <VBox spacing="10.0">
+            <VBox id="container" spacing="10.0">
                <children>
                   <Label text="Artikelnummer" />
                   <TextField fx:id="tf_add_art_num" />
                   <Label text="Beskrivning" />
                   <TextField fx:id="tf_add_description" />
                   <Label text="Status" />
-                  <ChoiceBox fx:id="cb_add_status" prefWidth="150.0" />
+                  <ChoiceBox fx:id="cb_add_status" prefWidth="200.0" />
                   <Button id="opsBtn" fx:id="btn_add_resource" disable="true" mnemonicParsing="false" text="Lägg till" />
                </children>
                <padding>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                </padding>
             </VBox>
-            <VBox spacing="10.0">
+            <VBox id="container" spacing="10.0">
                <children>
                   <Label text="Artikelnummer" />
                   <TextField fx:id="tf_edit_art_num" />
                   <Label text="Beskrivning" />
                   <TextField fx:id="td_edit_description" />
                   <Label text="Status" />
-                  <ChoiceBox fx:id="cb_edit_status" prefWidth="150.0" />
+                  <ChoiceBox fx:id="cb_edit_status" prefWidth="200.0" />
                   <Button id="opsBtn" fx:id="btn_edit_resource" disable="true" mnemonicParsing="false" text="Uppdatera" />
                </children>
                <padding>

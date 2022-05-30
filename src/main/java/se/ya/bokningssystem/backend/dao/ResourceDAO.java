@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
-import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 import se.ya.bokningssystem.frontend.utils.Alerter;

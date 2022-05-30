@@ -10,16 +10,16 @@ import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.frontend.admin.resource.handlers.*;
 
+import java.util.Arrays;
+
 @Getter
 public class ResourceController {
-    @FXML private Button btn_add, btn_delete, btn_edit, btn_find_all, btn_update;
-    @FXML private ChoiceBox<ResourceStatus> choice_add_status, choice_edit_status;
+    @FXML private Button btn_find_all;
+    @FXML private ChoiceBox<ResourceStatus> choice_filter;
     @FXML private TableView<ResourceEO> tv;
     @FXML private TableColumn<ResourceEO, String> col_artnumber;
     @FXML private TableColumn<ResourceEO, String> col_description;
     @FXML private TableColumn<ResourceEO, ResourceStatus> col_status;
-    @FXML private TextField tf_add_artnumber, tf_add_description;
-    @FXML private TextField tf_edit_artnumber, tf_edit_description;
     @FXML private TextField tf_find_by_artnumber, tf_find_by_description;
 
     private final ObservableList<ResourceEO> resources = FXCollections.observableArrayList();
@@ -40,26 +40,19 @@ public class ResourceController {
         tf_find_by_artnumber.textProperty().addListener(findResourceListener);
         tf_find_by_description.textProperty().addListener(findResourceListener);
 
-        // enable select section
-        ListSelectionListener listSelectionListener = new ListSelectionListener(this);
-        tv.getSelectionModel().selectedItemProperty().addListener(listSelectionListener);
-
-        // populate choiceBoxes
-        choice_add_status.getItems().addAll(ResourceStatus.values());
-        choice_edit_status.getItems().addAll(ResourceStatus.values());
-
         // Buttons action events
         ActionHandler actionHandler = new ActionHandler(this);
-        btn_update.setOnAction(actionHandler);
-        btn_edit.setOnAction(actionHandler);
-        btn_delete.setOnAction(actionHandler);
-        btn_add.setOnAction(actionHandler);
         btn_find_all.setOnAction(actionHandler);
 
-        // Add section change listener
-        AddSectionChangeListener addSectionChangeListener = new AddSectionChangeListener(this);
-        tf_add_artnumber.textProperty().addListener(addSectionChangeListener);
-        tf_add_description.textProperty().addListener(addSectionChangeListener);
-        choice_add_status.getSelectionModel().selectedItemProperty().addListener(addSectionChangeListener);
+        // filter choicebox
+        choice_filter.getItems().addAll(ResourceStatus.values());
+
+        // filter listener
+        FindHelper findHelper = new FindHelper( this);
+        choice_filter.getSelectionModel().selectedItemProperty().addListener((observableValue, s, t1) -> {
+            if (t1 != null){
+                findHelper.populateResourceList(t1);
+            }
+        });
     }
 }

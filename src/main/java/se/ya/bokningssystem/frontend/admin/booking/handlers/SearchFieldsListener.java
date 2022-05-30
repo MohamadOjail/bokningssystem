@@ -21,6 +21,7 @@ public class SearchFieldsListener implements ChangeListener<String> {
     private final BookingDAO bookingDAO;
     private final ResourceDAO resourceDAO;
     private final UserDAO userDAO;
+    private final FilterHelper filterHelper;
 
     public SearchFieldsListener(BookingController bc) {
         this.bc = bc;
@@ -29,6 +30,7 @@ public class SearchFieldsListener implements ChangeListener<String> {
         this.bc.getBookings().clear();
         this.bc.getBookings().addAll(bookingDAO.findAll());
         this.userDAO = new UserDAO();
+        this.filterHelper = new FilterHelper(bc);
     }
 
     @Override
@@ -40,40 +42,40 @@ public class SearchFieldsListener implements ChangeListener<String> {
                 bc.getTf_by_user().clear();
                 List<ResourceEO> resources = resourceDAO.getListByNamedQuery(ResourceNamedQueries.GET_BY_DESCRIPTION.queryName, "%" + t1 + "%");
                 if (!resources.isEmpty()){
-                    populateWithResource(getUniqueList(resources));
+                    filterHelper.populateWithResource(filterHelper.getUniqueList(resources));
                     return;
                 }
-                populateNoFilter();
+                filterHelper.populateNoFilter();
                 return;
             }
             if (!t1.isEmpty() && field.getBean().equals(bc.getTf_by_user())){
                 bc.getTf_by_resource().clear();
                 UserEO userEO = userDAO.getByNamedQuery(UserNamedQueries.SINGLE_BY_NAME.queryName, t1);
                 if (userEO != null){
-                    populateWithUser(userEO);
+                    filterHelper.populateWithUser(userEO);
                     return;
                 }
             }
-            populateNoFilter();
+            filterHelper.populateNoFilter();
         }
     }
-    private void populateWithUser(UserEO userEO){
-        bc.getBookings().clear();
-        bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, userEO));
-    }
-    private void populateNoFilter(){
-        bc.getBookings().clear();
-        bc.getBookings().addAll(bookingDAO.findAll());
-    }
-
-    private void populateWithResource(List<ResourceEO> resources){
-        bc.getBookings().clear();
-        for (ResourceEO resourceEO : resources){
-            bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_RESOURCE.queryName, resourceEO));
-        }
-    }
-
-    private List<ResourceEO> getUniqueList(List<ResourceEO> objects){
-        return objects.stream().distinct().collect(Collectors.toList());
-    }
+//    private void populateWithUser(UserEO userEO){
+//        bc.getBookings().clear();
+//        bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, userEO));
+//    }
+//    private void populateNoFilter(){
+//        bc.getBookings().clear();
+//        bc.getBookings().addAll(bookingDAO.findAll());
+//    }
+//
+//    private void populateWithResource(List<ResourceEO> resources){
+//        bc.getBookings().clear();
+//        for (ResourceEO resourceEO : resources){
+//            bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_RESOURCE.queryName, resourceEO));
+//        }
+//    }
+//
+//    private List<ResourceEO> getUniqueList(List<ResourceEO> objects){
+//        return objects.stream().distinct().collect(Collectors.toList());
+//    }
 }
