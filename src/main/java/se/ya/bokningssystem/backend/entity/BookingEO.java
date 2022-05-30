@@ -18,6 +18,8 @@ import java.time.LocalDate;
                         query = "FROM BookingEO b WHERE b.status = 'OVERDUE'"),
                 @NamedQuery(name = "by_overdue_by_user",
                         query = "FROM BookingEO b WHERE b.status = 'OVERDUE' AND b.user = :input"),
+                @NamedQuery(name = "by_overdue_by_resource",
+                        query = "FROM BookingEO b WHERE b.status = 'OVERDUE' AND b.resource = :input"),
                 @NamedQuery(name = "by_user",
                         query = "FROM BookingEO b WHERE b.user = :input"),
                 @NamedQuery(name = "by_resource",
