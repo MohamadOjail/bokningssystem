@@ -28,6 +28,7 @@ public class ActionHandler implements EventHandler<ActionEvent> {
             resourceEO.setStatus(ResourceStatus.AVAILABLE);
             bookingDAO.delete(bc.getTv().getSelectionModel().getSelectedItem().getId());
             refreshBookingList();
+            bc.getTv().refresh();
         }
         if (e.getSource() == bc.getBtn_finish()){
             ResourceEO resourceEO = bc.getTv().getSelectionModel().getSelectedItem().getResource();
@@ -47,10 +48,12 @@ public class ActionHandler implements EventHandler<ActionEvent> {
             selectedBooking.setStatus(BookingStatus.OVERDUE);
             bookingDAO.update(selectedBooking);
             refreshBookingList();
+            bc.getTv().refresh();
         }
         if (e.getSource() == bc.getBtn_reset()){
             filterHelper.resetFilterFields();
             filterHelper.populateNoFilter();
+            bc.getTv().refresh();
         }
     }
 

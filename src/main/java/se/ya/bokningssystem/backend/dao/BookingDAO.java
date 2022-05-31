@@ -25,6 +25,9 @@ public class BookingDAO implements CrudOps<BookingEO> {
         Session session = factory.openSession();
         session.beginTransaction();
         session.persist(bookingEO);
+        ResourceEO resource = bookingEO.getResource();
+        resource.setAvailableDate(bookingEO.getReturnDate());
+        session.update(resource);
         session.getTransaction().commit();
         CrudOps.endSession(session);
         return bookingEO;

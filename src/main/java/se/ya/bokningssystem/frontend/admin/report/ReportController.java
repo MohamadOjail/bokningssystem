@@ -9,18 +9,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.Getter;
-import se.ya.bokningssystem.backend.dao.BookingDAO;
-import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
-import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
 import se.ya.bokningssystem.frontend.admin.report.handlers.Finder;
-import se.ya.bokningssystem.frontend.admin.report.handlers.UserChangeListener;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 public class ReportController {
@@ -66,17 +60,31 @@ public class ReportController {
 
         //choicebox data
         cb_user.setItems(users);
+        finder.getUsers();
         cb_resource.setItems(resources);
+        finder.getResorces();
 
         //actionhandler
-        btn_reset.setOnAction(event -> {
-            cb_resource.getSelectionModel().select(null);
-            cb_user.getSelectionModel().select(null);
-        });
+        btn_reset.setOnAction(event -> finder.reset());
 
         //userChangeListener
-        UserChangeListener userChangeListener = new UserChangeListener(this);
-        cb_user.getSelectionModel().selectedItemProperty().addListener(userChangeListener);
+
+        cb_user.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null){
+                cb_resource.getSelectionModel().select(null);
+                finder.populateByUser(newValue);
+            }
+
+        });
+
+        //resourcechangelistener
+        cb_resource.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                cb_user.getSelectionModel().select(null);
+                finder.populateByResource(newValue);
+            }
+        });
+
     }
 
 }

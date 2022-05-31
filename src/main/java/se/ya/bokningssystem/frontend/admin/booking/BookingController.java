@@ -14,6 +14,7 @@ import se.ya.bokningssystem.frontend.admin.booking.handlers.ActionHandler;
 import se.ya.bokningssystem.frontend.admin.booking.handlers.FilterHelper;
 import se.ya.bokningssystem.frontend.admin.booking.handlers.ListChangeListener;
 import se.ya.bokningssystem.frontend.admin.booking.handlers.SearchFieldsListener;
+import se.ya.bokningssystem.frontend.user.handlers.CellStyler;
 
 import java.time.LocalDate;
 
@@ -22,7 +23,7 @@ public class BookingController {
     @FXML private Button btn_delete, btn_finish, btn_overdue, btn_reset;
     @FXML private TableColumn<BookingEO, LocalDate> col_actual_return_date;
     @FXML private TableColumn<BookingEO, LocalDate> col_booking_date;
-    @FXML private TableColumn<BookingEO, LocalDate> col_reminder_date;
+
     @FXML private TableColumn<BookingEO, ResourceEO> col_resource;
     @FXML private TableColumn<BookingEO, LocalDate> col_returl_date;
     @FXML private TableColumn<BookingEO, String> col_status;
@@ -44,40 +45,8 @@ public class BookingController {
         col_resource.setCellValueFactory(new PropertyValueFactory<>("resource"));
         col_booking_date.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
         col_returl_date.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
-        col_reminder_date.setCellValueFactory(new PropertyValueFactory<>("reminderDate"));
         col_actual_return_date.setCellValueFactory(new PropertyValueFactory<>("actualReturnDate"));
-//        col_status.setCellValueFactory(booking -> {
-//            SimpleStringProperty property = new SimpleStringProperty();
-//            property.setValue(booking.getValue().getStatus().value);
-//            return property;
-//        });
-
-        col_status.setCellFactory(param -> new TableCell<BookingEO, String>()
-        {
-            @Override
-            protected void updateItem(String item, boolean empty)
-            {
-                if (!empty)
-                {
-                    int currentIndex = indexProperty()
-                            .getValue() < 0 ? 0
-                            : indexProperty().getValue();
-
-                    BookingStatus status = param
-                            .getTableView().getItems()
-                            .get(currentIndex).getStatus();
-                    if (status.equals(BookingStatus.OVERDUE))
-                    {
-                        setId("overdue");
-                    } else
-                    {
-                        setId("");
-                    }
-                        setText(status.value);
-                }
-            }
-        });
-
+        col_status.setCellFactory(CellStyler::call);
 
         // Buttons Action handler
         ActionHandler actionHandler = new ActionHandler(this);

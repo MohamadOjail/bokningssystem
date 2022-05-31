@@ -18,9 +18,12 @@ public class FilterHelper {
         this.bc = bc;
     }
 
-    public void populateWithUser(UserEO userEO){
+    public void populateWithUser(List<UserEO> users){
         bc.getBookings().clear();
-        bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, userEO));
+        users.forEach(u-> {
+            bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, u));
+        });
+
         bc.getChoice_filter_status().getSelectionModel().select(null);
         bc.getTv().refresh();
     }
@@ -53,5 +56,6 @@ public class FilterHelper {
         bc.getTf_by_resource().clear();
         bc.getTf_by_user().clear();
         bc.getChoice_filter_status().getSelectionModel().select(null);
+        bc.getTv().refresh();
     }
 }

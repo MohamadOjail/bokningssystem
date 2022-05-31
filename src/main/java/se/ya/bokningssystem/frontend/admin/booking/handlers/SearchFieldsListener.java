@@ -50,32 +50,14 @@ public class SearchFieldsListener implements ChangeListener<String> {
             }
             if (!t1.isEmpty() && field.getBean().equals(bc.getTf_by_user())){
                 bc.getTf_by_resource().clear();
-                UserEO userEO = userDAO.getByNamedQuery(UserNamedQueries.SINGLE_BY_NAME.queryName, t1);
-                if (userEO != null){
-                    filterHelper.populateWithUser(userEO);
+                List<UserEO> users = userDAO.getListByNamedQuery(UserNamedQueries.BY_FIRST_OR_LAST_NAME.queryName, t1);
+                if (users.size()!= 0){
+                    filterHelper.populateWithUser(users);
                     return;
                 }
             }
             filterHelper.populateNoFilter();
         }
     }
-//    private void populateWithUser(UserEO userEO){
-//        bc.getBookings().clear();
-//        bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, userEO));
-//    }
-//    private void populateNoFilter(){
-//        bc.getBookings().clear();
-//        bc.getBookings().addAll(bookingDAO.findAll());
-//    }
-//
-//    private void populateWithResource(List<ResourceEO> resources){
-//        bc.getBookings().clear();
-//        for (ResourceEO resourceEO : resources){
-//            bc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_RESOURCE.queryName, resourceEO));
-//        }
-//    }
-//
-//    private List<ResourceEO> getUniqueList(List<ResourceEO> objects){
-//        return objects.stream().distinct().collect(Collectors.toList());
-//    }
+
 }

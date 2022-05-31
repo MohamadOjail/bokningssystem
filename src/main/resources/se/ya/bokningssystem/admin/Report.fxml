@@ -22,13 +22,13 @@
                   <VBox>
                      <children>
                         <Label text="användare" />
-                        <ChoiceBox fx:id="cb_user" prefWidth="220.0" />
+                        <ChoiceBox fx:id="cb_user" prefWidth="300.0" />
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="10.0">
                      <children>
                         <Label text="resurs" />
-                        <ChoiceBox fx:id="cb_resource" prefWidth="220.0" />
+                        <ChoiceBox fx:id="cb_resource" prefWidth="300.0" />
                      </children>
                   </VBox>
                   <VBox alignment="BOTTOM_LEFT" layoutX="230.0" layoutY="10.0">
@@ -40,8 +40,8 @@
             </HBox>
             <TableView fx:id="tv" prefHeight="700.0">
               <columns>
-                <TableColumn fx:id="col_user" prefWidth="200.0" text="Användare" />
-                <TableColumn fx:id="col_resource" prefWidth="200.0" text="Resurs" />
+                <TableColumn fx:id="col_user" prefWidth="300.0" text="Användare" />
+                <TableColumn fx:id="col_resource" prefWidth="300.0" text="Resurs" />
                   <TableColumn fx:id="col_return" prefWidth="150.0" text="Återlämnas" />
               </columns>
                <VBox.margin>
