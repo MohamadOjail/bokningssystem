@@ -17,6 +17,9 @@ import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
+import se.ya.bokningssystem.backend.util.BookingService;
+import se.ya.bokningssystem.backend.util.ResourceService;
+import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
 import se.ya.bokningssystem.frontend.switcher.Switcher;
 import se.ya.bokningssystem.frontend.switcher.Views;
 import se.ya.bokningssystem.frontend.user.UserController;
@@ -33,6 +36,8 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
     private final BookingDAO bookingDAO = new BookingDAO();
     private final ResourceDAO resourceDAO = new ResourceDAO();
     private final UserDAO userDAO = new UserDAO();
+    private final ResourceService resourceService = new ResourceService();
+    private final BookingService bookingService = new BookingService();
 
     public UserActionHandler(UserController uc) {this.uc = uc;}
 
@@ -64,7 +69,6 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
             root = loader.load();
             SetupController sc = loader.getController();
             sc.setUc(uc);
-            sc.setAvailableDate(uc.getTv_resources().getSelectionModel().getSelectedItem().getAvailableDate());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -75,22 +79,13 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
         stage.showAndWait();
     }
     private void bookResource(){
+        ObjectHolder.get().setUserSelectedResource(uc.getTv_resources().getSelectionModel().getSelectedItem());
         showSetup();
         if (uc.isSetupCanceled()) return;
         UserEO user = uc.getCurrentUser();
-        ResourceEO resourceEO = uc.getTv_resources().getSelectionModel().getSelectedItem();
-        BookingEO bookingEO = new BookingEO();
-        bookingEO.setUser(user);
-        bookingEO.setStatus(BookingStatus.ACTIVE);
-        bookingEO.setBookingDate(uc.getNewBookingDate());
-        bookingEO.setResource(resourceEO);
-        bookingEO.setReturnDate(uc.getNewReturnDate());
-        bookingEO.setReminderDate(uc.getNewReturnDate().minusDays(1));
-        bookingDAO.add(bookingEO);
-        user.addBooking(bookingEO);
-        userDAO.update(user);
-        resourceEO.setStatus(ResourceStatus.BORROWED);
-        resourceDAO.update(resourceEO);
+        ResourceEO resource = ObjectHolder.get().getUserSelectedResource();
+        bookingService.bookResource(user, uc.getNewBookingDate(), uc.getNewReturnDate(), resource);
+
         Alerter.get().showMessage(Alert.AlertType.INFORMATION, "Bokad");
         uc.setSetupCanceled(true);
         refreshResourceList();
@@ -109,13 +104,7 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
     }
 
     private void returnResource(){
-        ResourceEO resource = uc.getTv_bookings().getSelectionModel().getSelectedItem().getResource();
-        BookingEO selectedBooking = uc.getTv_bookings().getSelectionModel().getSelectedItem();
-        selectedBooking.setStatus(BookingStatus.FINISHED);
-        selectedBooking.setActualReturnDate(LocalDate.now());
-        bookingDAO.update(selectedBooking);
-        resource.setStatus(ResourceStatus.AVAILABLE);
-        resourceDAO.update(resource);
+        bookingService.closeBooking(uc.getTv_bookings().getSelectionModel().getSelectedItem());
         refreshBookingsList();
         refreshResourceList();
         Alerter.get().showMessage(Alert.AlertType.INFORMATION, "Bokningen avslutades");

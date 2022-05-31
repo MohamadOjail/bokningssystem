@@ -5,12 +5,14 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
+import se.ya.bokningssystem.backend.util.ResourceService;
 import se.ya.bokningssystem.frontend.admin.inventory.InventoryController;
 import se.ya.bokningssystem.frontend.utils.Alerter;
 
 public class ActionEventsHandler implements EventHandler<ActionEvent> {
     private final InventoryController ic;
     private final ResourceDAO rd = new ResourceDAO();
+    private final ResourceService resourceService = new ResourceService();
 
     public ActionEventsHandler(InventoryController ic) {
         this.ic = ic;
@@ -58,9 +60,7 @@ public class ActionEventsHandler implements EventHandler<ActionEvent> {
     }
 
     private void deleteResource(){
-        rd.delete(
-                ic.getTv().getSelectionModel().getSelectedItem().getId()
-        );
+        resourceService.deleteResource(ic.getTv().getSelectionModel().getSelectedItem());
     }
     private void refreshResourceList(){
         ic.getResourceEOS().clear();

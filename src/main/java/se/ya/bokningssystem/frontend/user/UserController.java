@@ -13,7 +13,6 @@ import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
-import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
 import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
 import se.ya.bokningssystem.frontend.user.handlers.*;
 
@@ -73,6 +72,7 @@ public class UserController {
         });
         col_rscs_available_date.setCellValueFactory(new PropertyValueFactory<>("artNum"));
 
+        // search field change listener
         UserSearchFieldListener searchFieldListener = new UserSearchFieldListener(this);
         tf_search.textProperty().addListener(searchFieldListener);
 

@@ -44,13 +44,14 @@ DatePicker{
 }
 
 #allowed{
-    -fx-background-color: #5ee600;
+    -fx-background-color: rgba(94, 230, 0, 0.1);
 }
 #allowed:hover{
     -fx-text-fill: #11110e;
 }
 #not-allowed{
-    -fx-background-color: rgba(104, 104, 104, 0.2);
+    /*-fx-background-color: rgba(104, 104, 104, 0.02);*/
+    -fx-text-fill:  rgba(104, 104, 104, 0.7);
 }
 
 #overdue{

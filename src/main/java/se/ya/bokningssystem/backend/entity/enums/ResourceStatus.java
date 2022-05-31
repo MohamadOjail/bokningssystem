@@ -4,6 +4,7 @@ public enum ResourceStatus {
     AVAILABLE("Tillgänglig"),
     NOT_AVAILABLE("Otillgänglig"),
     BORROWED("Utlånad"),
+    BOOKED("Bokad"),
     REPAIR("Trasig");
 
     public final String value;
