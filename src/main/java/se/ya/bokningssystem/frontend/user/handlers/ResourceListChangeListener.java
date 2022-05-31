@@ -14,8 +14,8 @@ public class ResourceListChangeListener implements ChangeListener<ResourceEO> {
     @Override
     public void changed(ObservableValue<? extends ResourceEO> observableValue, ResourceEO resourceEO, ResourceEO t1) {
         uc.getBtn_book().setDisable(
-                t1 == null ||
-                uc.getTv_resources().getSelectionModel().getSelectedItem().getStatus() != ResourceStatus.AVAILABLE
+                t1 == null
+//                uc.getTv_resources().getSelectionModel().getSelectedItem().getStatus() != ResourceStatus.AVAILABLE
         );
     }
 }

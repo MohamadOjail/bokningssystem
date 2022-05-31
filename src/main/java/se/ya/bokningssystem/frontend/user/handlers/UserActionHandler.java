@@ -99,11 +99,13 @@ public class UserActionHandler implements EventHandler<MouseEvent> {
     private void refreshResourceList(){
         uc.getResources().clear();
         uc.getResources().addAll(resourceDAO.findAll());
+        uc.getTv_resources().refresh();
     }
 
     private void refreshBookingsList(){
         uc.getBookings().clear();
         uc.getBookings().addAll(bookingDAO.getListByNamedQuery(BookingNamedQueries.GET_BY_USER.queryName, uc.getCurrentUser()));
+        uc.getTv_bookings().refresh();
     }
 
     private void returnResource(){
