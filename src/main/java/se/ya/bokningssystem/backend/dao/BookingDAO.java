@@ -7,6 +7,7 @@ import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
+import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDAO implements CrudOps<BookingEO> {
-
     private final SessionFactory factory = Factory.getFactory();
 
     @Override
@@ -26,7 +26,7 @@ public class BookingDAO implements CrudOps<BookingEO> {
         session.beginTransaction();
         session.persist(bookingEO);
         ResourceEO resource = bookingEO.getResource();
-        resource.setAvailableDate(bookingEO.getReturnDate());
+        resource.setStatus(ResourceStatus.BOOKED);
         session.update(resource);
         session.getTransaction().commit();
         CrudOps.endSession(session);
@@ -115,27 +115,19 @@ public class BookingDAO implements CrudOps<BookingEO> {
         CrudOps.endSession(session);
     }
 
-    public List<BookingEO> recheckStatus(){
-        List<BookingEO> output = new ArrayList<>();
+    public void recheckStatus(){
         Session session = factory.openSession();
         session.beginTransaction();
         Query<BookingEO> query = session.createQuery("FROM BookingEO");
+
         for (BookingEO bookingEO : query.getResultList()){
-            if (bookingEO.getActualReturnDate() != null && isOverdue(bookingEO)){
-                bookingEO.setStatus(BookingStatus.OVERDUE);
-                session.update(bookingEO);
-                ResourceEO resourceEO = bookingEO.getResource();
-                resourceEO.setAvailableDate(null);
-                session.update(resourceEO);
-                output.add(bookingEO);
-            }
+            if (bookingEO.getActualReturnDate() == null){
+                if (LocalDate.now().isAfter(bookingEO.getReturnDate())){
+                    bookingEO.setStatus(BookingStatus.OVERDUE);
+                } else bookingEO.setStatus(BookingStatus.ACTIVE);
+            }else bookingEO.setStatus(BookingStatus.FINISHED);
         }
         session.getTransaction().commit();
         CrudOps.endSession(session);
-        return output;
-    }
-
-    private boolean isOverdue(BookingEO booking){
-       return LocalDate.now().isAfter(booking.getReturnDate());
     }
 }
