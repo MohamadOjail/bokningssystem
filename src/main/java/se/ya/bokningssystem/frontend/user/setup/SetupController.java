@@ -37,12 +37,17 @@ public class SetupController {
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
                 setId("allowed");
+                boolean beforeToday = item.isBefore(LocalDate.now());
+                if (beforeToday){
+                    setDisable(true);
+                    setId("not-allowed");
+                }
                 for (BookingEO x : bookings){
-                    boolean beforeToday = item.isBefore(LocalDate.now());
+
                     boolean notBeforeMe = item.isBefore(x.getReturnDate()) && !item.isBefore(x.getBookingDate());
                     boolean starter = item.isEqual(x.getBookingDate());
 
-                    if (notBeforeMe || starter || beforeToday){
+                    if (notBeforeMe || starter){
                         setDisable(true);
                         setId("not-allowed");
                     }
