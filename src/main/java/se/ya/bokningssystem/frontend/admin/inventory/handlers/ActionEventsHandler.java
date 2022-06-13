@@ -2,12 +2,10 @@ package se.ya.bokningssystem.frontend.admin.inventory.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.util.ResourceService;
 import se.ya.bokningssystem.frontend.admin.inventory.InventoryController;
-import se.ya.bokningssystem.frontend.utils.Alerter;
 
 public class ActionEventsHandler implements EventHandler<ActionEvent> {
     private final InventoryController ic;

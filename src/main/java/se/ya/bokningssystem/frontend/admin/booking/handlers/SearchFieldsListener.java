@@ -8,13 +8,11 @@ import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.dao.UserDAO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
-import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
 import se.ya.bokningssystem.backend.entity.enums.ResourceNamedQueries;
 import se.ya.bokningssystem.backend.entity.enums.UserNamedQueries;
 import se.ya.bokningssystem.frontend.admin.booking.BookingController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SearchFieldsListener implements ChangeListener<String> {
     private final BookingController bc;

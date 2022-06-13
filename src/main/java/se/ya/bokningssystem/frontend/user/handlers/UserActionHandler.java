@@ -11,12 +11,9 @@ import javafx.stage.Stage;
 import se.ya.bokningssystem.backend.dao.BookingDAO;
 import se.ya.bokningssystem.backend.dao.ResourceDAO;
 import se.ya.bokningssystem.backend.dao.UserDAO;
-import se.ya.bokningssystem.backend.entity.BookingEO;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.UserEO;
 import se.ya.bokningssystem.backend.entity.enums.BookingNamedQueries;
-import se.ya.bokningssystem.backend.entity.enums.BookingStatus;
-import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.backend.util.BookingService;
 import se.ya.bokningssystem.backend.util.ResourceService;
 import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
@@ -27,8 +24,6 @@ import se.ya.bokningssystem.frontend.user.setup.SetupController;
 import se.ya.bokningssystem.frontend.utils.Alerter;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Map;
 
 public class UserActionHandler implements EventHandler<MouseEvent> {
 

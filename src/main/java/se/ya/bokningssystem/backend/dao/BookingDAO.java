@@ -11,7 +11,6 @@ import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.backend.util.CrudOps;
 import se.ya.bokningssystem.backend.util.Factory;
 
-import javax.persistence.NamedQuery;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;

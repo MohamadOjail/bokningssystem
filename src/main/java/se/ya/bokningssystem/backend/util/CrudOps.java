@@ -3,9 +3,7 @@ package se.ya.bokningssystem.backend.util;
 import javafx.scene.control.Alert;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
-import javax.persistence.NamedQuery;
 import java.io.Serializable;
 import java.util.List;
 

@@ -3,7 +3,6 @@ package se.ya.bokningssystem.frontend.user.handlers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
-import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
 import se.ya.bokningssystem.frontend.user.UserController;
 
 public class ResourceListChangeListener implements ChangeListener<ResourceEO> {

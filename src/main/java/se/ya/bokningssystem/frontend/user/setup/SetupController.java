@@ -1,7 +1,6 @@
 package se.ya.bokningssystem.frontend.user.setup;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -14,7 +13,6 @@ import se.ya.bokningssystem.frontend.switcher.ObjectHolder;
 import se.ya.bokningssystem.frontend.user.UserController;
 import se.ya.bokningssystem.frontend.user.setup.handlers.ActionHandler;
 import se.ya.bokningssystem.frontend.user.setup.handlers.DateChangeListener;
-import se.ya.bokningssystem.frontend.utils.Alerter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

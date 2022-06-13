@@ -106,7 +106,7 @@ public class ResourceDAO implements CrudOps<ResourceEO> {
         Session session = factory.openSession();
         session.beginTransaction();
         TypedQuery<Long> query = session.createQuery("SELECT COUNT(*) FROM ResourceEO ");
-        count = (Long)query.getSingleResult();
+        count = query.getSingleResult();
         session.getTransaction().commit();
         CrudOps.endSession(session);
         return count;

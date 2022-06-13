@@ -8,9 +8,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.Getter;
 import se.ya.bokningssystem.backend.entity.ResourceEO;
 import se.ya.bokningssystem.backend.entity.enums.ResourceStatus;
-import se.ya.bokningssystem.frontend.admin.resource.handlers.*;
-
-import java.util.Arrays;
+import se.ya.bokningssystem.frontend.admin.resource.handlers.ActionHandler;
+import se.ya.bokningssystem.frontend.admin.resource.handlers.FindHelper;
+import se.ya.bokningssystem.frontend.admin.resource.handlers.FindResourceListener;
+import se.ya.bokningssystem.frontend.admin.resource.handlers.SearchFieldsHandler;
 
 @Getter
 public class ResourceController {
